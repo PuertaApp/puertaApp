@@ -1,91 +1,61 @@
-import React from 'react'
-import Link from 'next/link'
-import Head from 'next/head'
-import Nav from '../components/nav'
+// useEffect is the hook version of ComponentDidMount, which we're using to register our service worker.
+// https://medium.com/@felippenardi/how-to-do-componentdidmount-with-react-hooks-553ba39d1571 
+import React, { useState, useEffect } from "react";
+// these are our authentication functions, which take care of grabbing the user object from either the server
+// or the client (where we store it on the window)
+import { getSessionFromClient, getSessionFromServer, redirectUser } from '../lib/auth'
 
-const Home = () => (
-  <div>
-    <Head>
-      <title>Home</title>
-    </Head>
+import Layout from '../components/Layout';
+import StoryList from '../components/StoryList'
 
-    <Nav />
+require('isomorphic-fetch');
 
-    <div className='hero'>
-      <h1 className='title'>Welcome to Next.js!</h1>
-      <p className='description'>
-        To get started, edit <code>pages/index.js</code> and save to reload.
-      </p>
+const Index = ({ classes, auth, stories }) => {
+  return (
+    <main >
+      {auth.user && auth.user._id ? (
+        // Auth User Page
+        <div>
+          Auth user page
+          {
+            stories && <Layout title={'Hacker News Reader'} 
+            description={'A sample PWA built with React and Next.JS'}>
+              <StoryList stories={stories} />
+            </Layout>
+          }
+        </div>
+      ) : (
+        // Splash Page (UnAuth Page)
+        <div>
+          Un Auth page, splash page
+        </div>
+      )}
+    </main>
+  )
+}
+// Issues
+// 1 - use a hook to get the data for the stories 
+// 2 - DONE ensure you're mounting the service worker (used component did mount)
 
-      <div className='row'>
-        <Link href='https://github.com/zeit/next.js#setup'>
-          <a className='card'>
-            <h3>Getting Started &rarr;</h3>
-            <p>Learn more about Next.js on GitHub and in their examples.</p>
-          </a>
-        </Link>
-        <Link href='https://github.com/zeit/next.js/tree/master/examples'>
-          <a className='card'>
-            <h3>Examples &rarr;</h3>
-            <p>Find other example boilerplates on the Next.js GitHub.</p>
-          </a>
-        </Link>
-        <Link href='https://github.com/zeit/next.js'>
-          <a className='card'>
-            <h3>Create Next App &rarr;</h3>
-            <p>Was this tool helpful? Let us know how we can improve it!</p>
-          </a>
-        </Link>
-      </div>
-    </div>
+// Index.getInitialProps = authInitialProps();
+Index.getInitialProps = async function({req, res, query: { userId }}) {
+  // getting the auth and ensuring it's populated as props
+  const auth = req ? getSessionFromServer(req) : getSessionFromClient();
+  const currentPath = req ? req.url : window.location.pathname;
+  const user = auth.user;
+  const isAnonymous = !user;
+  // getting the stories from hacker news to seed our app
+  let stories
+  if (true && isAnonymous && currentPath !== "/signin") {
+    return redirectUser(res, "/signin");
+  }
+  try {
+    const req = await fetch(`https://node-hnapi.herokuapp.com/news?page=1`)
+    stories = await req.json()    
+  } catch(e){
+    stories = undefined
+  }
+  return { auth, userId, stories };
+};
 
-    <style jsx>{`
-      .hero {
-        width: 100%;
-        color: #333;
-      }
-      .title {
-        margin: 0;
-        width: 100%;
-        padding-top: 80px;
-        line-height: 1.15;
-        font-size: 48px;
-      }
-      .title,
-      .description {
-        text-align: center;
-      }
-      .row {
-        max-width: 880px;
-        margin: 80px auto 40px;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-      }
-      .card {
-        padding: 18px 18px 24px;
-        width: 220px;
-        text-align: left;
-        text-decoration: none;
-        color: #434343;
-        border: 1px solid #9b9b9b;
-      }
-      .card:hover {
-        border-color: #067df7;
-      }
-      .card h3 {
-        margin: 0;
-        color: #067df7;
-        font-size: 18px;
-      }
-      .card p {
-        margin: 0;
-        padding: 12px 0 0;
-        font-size: 13px;
-        color: #333;
-      }
-    `}</style>
-  </div>
-)
-
-export default Home
+export default Index;
