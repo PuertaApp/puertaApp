@@ -2,7 +2,7 @@ import Document, { Head, Main, NextScript } from "next/document";
 
 import { ServerStyleSheet } from 'styled-components'
 
-class MyDocument extends git Document {
+class MyDocument extends Document {
 	// fixes serverside flicker render with styled components
   static async getInitialProps(ctx) {
     const sheet = new ServerStyleSheet()
@@ -31,25 +31,24 @@ class MyDocument extends git Document {
 
   render() {
     return (
-      <html lang="en" dir="ltr">
-				//Every page should have a link to the manifest and the icons
+      <html lang="en" dir="ltr">				
         <Head>          
           <link
             rel="apple-touch-icon"
             sizes="152x152"
-            href="/static/apple-touch-icon.png"
+            href="/static/icon512.png"
           />
           <link
             rel="icon"
             type="image/png"
             sizes="32x32"
-            href="/static/favicon-32x32.png"
+            href="/static/icon32.png"
           />
           <link
             rel="icon"
             type="image/png"
             sizes="16x16"
-            href="/static/favicon-16x16.png"
+            href="/static/icon16.png"
           />
 
           <link rel="manifest" href="/static/manifest.json" />
