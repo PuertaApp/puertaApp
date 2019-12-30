@@ -1,15 +1,19 @@
 {
-  "name": "puerta-app",
+  "name": "pu",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "node server.js",
     "build": "next build",
-    "start": "next start"
+    "start": "NODE_ENV=production node server.js",
+    "heroku-postbuild": "npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "next": "9.1.6",
+    "next": "^9.1.6",
+    "next-offline": "^4.0.6",
     "react": "16.12.0",
-    "react-dom": "16.12.0"
+    "react-dom": "16.12.0",
+    "styled-components": "^4.4.1"
   }
 }
