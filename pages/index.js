@@ -13,7 +13,7 @@ import StoryList from '../components/StoryList'
 
 require('isomorphic-fetch');
 
-const Index = ({ classes, auth, houses, users }) => {
+const Index = ({ classes, auth, houses, userData }) => {
   return (
     <main >
       {auth.user && auth.user._id ? (
@@ -29,7 +29,7 @@ const Index = ({ classes, auth, houses, users }) => {
           }  
           {/* Verifying we can talk to the MongoDB */}
           Users 
-          {users.length}    
+          {userData.length}    
         </div>
       ) : (
         // Splash Page (UnAuth Page)
@@ -58,23 +58,39 @@ Index.getInitialProps = async function({req, res, query: { userId }}) {
   try {
     // The below works for hacker news stories on the front page
     // const req = await fetch(`https://node-hnapi.herokuapp.com/news?page=1`)
+    // HOW CAN WE DETERMINE IF WE'RE IN PRODUCTION OR DEV???
     console.log('before fetch')
-    const req = await fetch('http://localhost:3000/api/data')    
-    houses = await req.json()    
+    let data;
+    if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
+      // dev code
+      data = await fetch('http://localhost:3000/api/data')  
+    } else {
+      // production code
+      data = await fetch('https://dev.puerta.io/api/data')  
+    }
+      
+    houses = await data.json()    
     console.log('after await')
     console.log(houses)
   } catch(e){
     console.log(e)
     houses = undefined
   }
-  try {
-    const req = await fetch('http://localhost:3000/api/users')
-    users = await req.json();
+  let userData;
+  try {    
+    if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
+      // dev code
+      userData = await fetch('http://localhost:3000/api/users')  
+    } else {
+      // production code
+      userData = await fetch('https://dev.puerta.io/api/users')  
+    }
+    userData = await userData.json();
   } catch(e) {
-    users = undefined 
+    console.log(e)
+    userData = undefined 
   }
-
-  return { auth, userId, houses, users };
+  return { auth, userId, houses, userData };
 };
 
 export default Index;
