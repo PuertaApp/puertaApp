@@ -2,7 +2,7 @@
   "name": "Puerta App",
   "short_name": "Puerta",
   "background_color": "#FFFFFF",
-  "theme_color": "#d31253",
+  "theme_color": "#141940",
   "description": "Puerta - Uber for real estate",
   "display": "standalone",
   "start_url": "/",

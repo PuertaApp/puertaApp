@@ -5,6 +5,9 @@ import React, { useState, useEffect } from "react";
 // or the client (where we store it on the window)
 import { getSessionFromClient, getSessionFromServer, redirectUser } from '../lib/auth'
 
+// icon test 
+import AtomIcon from '../components/icons/AtomIcon'
+// end icon test 
 import Layout from '../components/Layout';
 import StoryList from '../components/StoryList'
 
@@ -16,6 +19,7 @@ const Index = ({ classes, auth, stories }) => {
       {auth.user && auth.user._id ? (
         // Auth User Page
         <div>
+          <AtomIcon height={"24px"} width={"24px"} fill={"#000"}/>
           Auth user page
           {
             stories && <Layout title={'Hacker News Reader'} 

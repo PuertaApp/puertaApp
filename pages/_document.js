@@ -50,7 +50,7 @@ class MyDocument extends Document {
             sizes="16x16"
             href="/static/icon16.png"
           />
-
+          <meta name="theme-color" content="#141940"></meta>
           <link rel="manifest" href="/static/manifest.json" />
         </Head>
         <body>
