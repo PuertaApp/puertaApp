@@ -37,14 +37,14 @@ To get started developing right away and run the project in Develepment mode, cl
 ## Functionality
 ### Desktop View
 In desktop view, the list sits in a panel that opens and closes left to allow a full screen map view.
-![enter image description here](https://gph.is/1LlgXtc)
+![enter image description here](https://media.giphy.com/media/8VkgrPdxMh0oo/giphy.gif)
 
 ### Mobile View
-![Mobile View](https://gph.is/1LlgXtc)
+![Mobile View](https://media.giphy.com/media/8VkgrPdxMh0oo/giphy.gif)
 
 **Note at the bottom of the screen in Mobile view the button.**
 
-![Toggle Button to toggle list view and map view in mobile](https://gph.is/1LlgXtc)
+![Toggle Button to toggle list view and map view in mobile](https://media.giphy.com/media/8VkgrPdxMh0oo/giphy.gif)
 
 
 ## A11y
