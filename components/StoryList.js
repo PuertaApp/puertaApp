@@ -3,17 +3,17 @@ import Router from 'next/router'
 
 export default class StoryList extends React.PureComponent {
   render() {
-    const { stories } = this.props
+    const { houses } = this.props
 
     return <div className="storyList">
 
-      { stories.map( (story) => (
-        <div className="storyItem" key={ story.id }>
-          <h2><a href={ story.url }>{ story.title }</a></h2>
+      { houses.map( (house) => (
+        <div className="storyItem" key={ house.id }>
+          <h2><a href={ house.url }>{ house.title }</a></h2>
           <div className="storyDetails">
-            <strong>{ story.points } points</strong>
-            <Link href={`/story?id=${story.id}`} prefetch>
-              <a>{ story.comments_count } comments</a>
+            <strong>{ house.points } points</strong>
+            <Link href={`/story?id=${house.id}`} prefetch>
+              <a>{ house.comments_count } comments</a>
             </Link>
           </div>
         </div>

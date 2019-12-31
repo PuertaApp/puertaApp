@@ -2,6 +2,7 @@ const express = require("express");
 const authController = require("../controllers/authController");
 const userController = require("../controllers/userController");
 const postController = require("../controllers/postController");
+const dataController = require("../controllers/dataController");
 
 const router = express.Router();
 
@@ -12,6 +13,13 @@ const catchErrors = fn => {
   };
 };
 
+/** 
+ *  DATA ROUTE: /api/data
+ */
+router.get(
+  "/api/data",
+  dataController.getData
+)
 /**
  * AUTH ROUTES: /api/auth
  */
