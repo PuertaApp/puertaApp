@@ -13,7 +13,7 @@ import StoryList from '../components/StoryList'
 
 require('isomorphic-fetch');
 
-const Index = ({ classes, auth, houses }) => {
+const Index = ({ classes, auth, houses, users }) => {
   return (
     <main >
       {auth.user && auth.user._id ? (
@@ -26,7 +26,10 @@ const Index = ({ classes, auth, houses }) => {
             description={'A sample PWA built with React and Next.JS'}>
               <StoryList houses={houses} />
             </Layout>
-          }      
+          }  
+          {/* Verifying we can talk to the MongoDB */}
+          Users 
+          {users.length}    
         </div>
       ) : (
         // Splash Page (UnAuth Page)
@@ -46,6 +49,7 @@ Index.getInitialProps = async function({req, res, query: { userId }}) {
   const isAnonymous = !user;
   // getting the stories from hacker news to seed our app
   let houses
+  let users
   // PROTECTED ROUTES //  
   if (true && isAnonymous && currentPath !== "/signin") {
     return redirectUser(res, "/signin");
@@ -63,7 +67,14 @@ Index.getInitialProps = async function({req, res, query: { userId }}) {
     console.log(e)
     houses = undefined
   }
-  return { auth, userId, houses };
+  try {
+    const req = await fetch('http://localhost:3000/api/users')
+    users = await req.json();
+  } catch(e) {
+    users = undefined 
+  }
+
+  return { auth, userId, houses, users };
 };
 
 export default Index;
