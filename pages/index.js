@@ -58,7 +58,6 @@ Index.getInitialProps = async function({req, res, query: { userId }}) {
   try {
     // The below works for hacker news stories on the front page
     // const req = await fetch(`https://node-hnapi.herokuapp.com/news?page=1`)
-    // HOW CAN WE DETERMINE IF WE'RE IN PRODUCTION OR DEV???
     console.log('before fetch')
     let data;
     if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
