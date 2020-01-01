@@ -27,6 +27,7 @@
     "morgan": "^1.9.1",
     "multer": "^1.4.2",
     "next": "^9.1.6",
+    "next-absolute-url": "^1.1.1",
     "next-images": "^1.2.0",
     "next-offline": "^4.0.6",
     "nprogress": "^0.2.0",

@@ -1,6 +1,10 @@
 // useEffect is the hook version of ComponentDidMount, which we're using to register our service worker.
 // https://medium.com/@felippenardi/how-to-do-componentdidmount-with-react-hooks-553ba39d1571 
 import React, { useState, useEffect } from "react";
+
+// getting the URL we're running
+import absoluteUrl from 'next-absolute-url'
+
 // these are our authentication functions, which take care of grabbing the user object from either the server
 // or the client (where we store it on the window)
 import { getSessionFromClient, getSessionFromServer, redirectUser } from '../lib/auth'
@@ -13,7 +17,7 @@ import StoryList from '../components/StoryList'
 
 require('isomorphic-fetch');
 
-const Index = ({ classes, auth, houses, userData }) => {
+const Index = ({ req, classes, auth, houses, userData }) => {
   return (
     <main >
       {auth.user && auth.user._id ? (
@@ -47,6 +51,11 @@ Index.getInitialProps = async function({req, res, query: { userId }}) {
   const currentPath = req ? req.url : window.location.pathname;
   const user = auth.user;
   const isAnonymous = !user;
+  // getting the url we're running 
+  const { protocol, host } = absoluteUrl(req)
+  const url = `${host}`
+  console.log(url)
+
   // getting the stories from hacker news to seed our app
   let houses
   let users
@@ -55,9 +64,7 @@ Index.getInitialProps = async function({req, res, query: { userId }}) {
     return redirectUser(res, "/signin");
   }
   // ^^ PROTECTED ROUTES ^^ //
-  try {
-    // The below works for hacker news stories on the front page
-    // const req = await fetch(`https://node-hnapi.herokuapp.com/news?page=1`)
+  try {        
     console.log('before fetch')
     let data;
     if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
@@ -65,7 +72,7 @@ Index.getInitialProps = async function({req, res, query: { userId }}) {
       data = await fetch('http://localhost:3000/api/data')  
     } else {
       // production code
-      data = await fetch('https://dev.puerta.io/api/data')  
+      data = await fetch(`https://${url}/api/data`)  
     }
       
     houses = await data.json()    
@@ -82,7 +89,7 @@ Index.getInitialProps = async function({req, res, query: { userId }}) {
       userData = await fetch('http://localhost:3000/api/users')  
     } else {
       // production code
-      userData = await fetch('https://dev.puerta.io/api/users')  
+      userData = await fetch(`https://${url}/api/users`)  
     }
     userData = await userData.json();
   } catch(e) {
