@@ -1,17 +1,19 @@
 const mongoose = require("mongoose");
 const User = mongoose.model("User");
 const passport = require("passport");
+const Name = require("../models/Name");
+const Buyer = require("../models/Buyer");
 
 exports.validateSignup = (req, res, next) => {
-  req.sanitizeBody("name");
-  req.sanitizeBody("email");
-  req.sanitizeBody("password");
+  // req.sanitizeBody("name");
+  // req.sanitizeBody("email");
+  // req.sanitizeBody("password");
 
   // Name is non-null and is 4 to 10 characters
-  req.checkBody("name", "Enter a name").notEmpty();
-  req
-    .checkBody("name", "Name must be between 4 and 10 characters")
-    .isLength({ min: 4, max: 10 });
+  // req.checkBody("name", "Enter a name").notEmpty();
+  // req
+  //   .checkBody("name", "Name must be between 4 and 10 characters")
+  //   .isLength({ min: 4, max: 10 });
 
   // Email is non-null, valid, and normalized
   req
@@ -34,14 +36,48 @@ exports.validateSignup = (req, res, next) => {
 };
 
 exports.signup = async (req, res) => {
-  const { name, email, password } = req.body;
-  const user = await new User({ name, email, password });
-  await User.register(user, password, (err, user) => {
+  const { name, email, password, phone, role } = req.body;
+  const splittedName = name.trim().split(" ");
+  let newName;
+  if (splittedName.length === 2) {
+    newName = Name.create({
+      firstName: splittedName[0],
+      lastName: splittedName[1],
+      middleName: null
+    });
+  } else if (splittedName.length === 3) {
+    newName = Name.create({
+      firstName: splittedName[0],
+      lastName: splittedName[2],
+      middleName: splittedName[1]
+    });
+  }
+  const user = await new User({
+    name: (await newName)._id,
+    email,
+    password,
+    phone,
+    password,
+    role
+  });
+
+  if (user.role === "agent") {
+    // TO DO
+  } else if (user.role === "rep") {
+    // TO DO
+  } else {
+    const buyer = await Buyer.create({
+      name: (await newName)._id
+    });
+    user.buyerId = (await buyer)._id;
+  }
+
+  await User.register(user, password, async (err, user) => {
     if (err) {
-      console.log(err)
+      console.log(err);
       return res.status(500).send(err.message);
     }
-    res.json(user.name);
+    res.status(200).json(user);
   });
 };
 

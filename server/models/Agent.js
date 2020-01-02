@@ -26,7 +26,7 @@ const userSchema = new mongoose.Schema(
       // required: "Description is requrired for agents" , //// REQUIRED OR NOT?
       default: ""
     },
-    leads: [{ type: ObjectId, ref: "Buyer" }],
+    leads: [{ type: ObjectId, ref: "Buyer", default: [] }],
     userId: {
       type: ObjectId,
       ref: "User"

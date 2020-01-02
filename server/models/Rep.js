@@ -26,7 +26,8 @@ const userSchema = new mongoose.Schema(
     },
     userId: {
       type: ObjectId,
-      ref: "User"
+      ref: "User",
+      default: []
     }
   },
   { timestamps: true }
