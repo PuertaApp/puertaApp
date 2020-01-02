@@ -15,6 +15,7 @@ const ButtonStyle = styled.div`
   align-items: center;
   font-size: 30px;
   color: #111535;
+  margin-top: 1rem;
   &:active {
     /* pressed button / field */
     box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1), inset 2px 2px 8px rgba(126, 138, 167, 0.4), inset -4px -4px 10px rgba(255, 255, 255, 0.7);
@@ -22,7 +23,7 @@ const ButtonStyle = styled.div`
 `
 
 const Button = (props) => (
-  <ButtonStyle>
+  <ButtonStyle onClick={props.onClick}>
     {props.text}
   </ButtonStyle>
 )
