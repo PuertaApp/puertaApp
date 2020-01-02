@@ -52,9 +52,7 @@ Index.getInitialProps = async function({req, res, query: { userId }}) {
   const user = auth.user;
   const isAnonymous = !user;
   // getting the url we're running 
-  const { protocol, host } = absoluteUrl(req)
-  const url = `${host}`
-  console.log(url)
+  const { origin } = absoluteUrl(req)
 
   // getting the stories from hacker news to seed our app
   let houses
@@ -72,7 +70,7 @@ Index.getInitialProps = async function({req, res, query: { userId }}) {
       data = await fetch('http://localhost:3000/api/data')  
     } else {
       // production code
-      data = await fetch(`https://${url}/api/data`)  
+      data = await fetch(`${origin}/api/data`)  
     }
       
     houses = await data.json()    
@@ -89,7 +87,7 @@ Index.getInitialProps = async function({req, res, query: { userId }}) {
       userData = await fetch('http://localhost:3000/api/users')  
     } else {
       // production code
-      userData = await fetch(`https://${url}/api/users`)  
+      userData = await fetch(`${origin}/api/users`)  
     }
     userData = await userData.json();
   } catch(e) {
