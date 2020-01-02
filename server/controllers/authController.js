@@ -37,21 +37,10 @@ exports.validateSignup = (req, res, next) => {
 
 exports.signup = async (req, res) => {
   const { name, email, password, phone, role } = req.body;
-  const splittedName = name.trim().split(" ");
-  let newName;
-  if (splittedName.length === 2) {
-    newName = Name.create({
-      firstName: splittedName[0],
-      lastName: splittedName[1],
-      middleName: null
-    });
-  } else if (splittedName.length === 3) {
-    newName = Name.create({
-      firstName: splittedName[0],
-      lastName: splittedName[2],
-      middleName: splittedName[1]
-    });
-  }
+  newName = Name.create({
+    firstName: name
+  });
+
   const user = await new User({
     name: (await newName)._id,
     email,
@@ -62,9 +51,15 @@ exports.signup = async (req, res) => {
   });
 
   if (user.role === "agent") {
-    // TO DO
+    const agent = await Buyer.create({
+      name: (await newName)._id
+    });
+    user.agentId = (await agent)._id;
   } else if (user.role === "rep") {
-    // TO DO
+    const rep = await Buyer.create({
+      name: (await newName)._id
+    });
+    user.repId = (await rep)._id;
   } else {
     const buyer = await Buyer.create({
       name: (await newName)._id

@@ -3,7 +3,7 @@ const { ObjectId } = mongoose.Schema;
 const mongodbErrorHandler = require("mongoose-mongodb-errors");
 const passportLocalMongoose = require("passport-local-mongoose");
 
-const userSchema = new mongoose.Schema(
+const houseSchema = new mongoose.Schema(
   {
     likes: [
       {
@@ -60,7 +60,7 @@ const autoPopulatePostedBy = function(next) {
   next();
 };
 
-userSchema.pre("findOne", autoPopulatePostedBy);
+houseSchema.pre("findOne", autoPopulatePostedBy);
 
 /* passportLocalMongoose takes our User schema and sets up a passport "local" authentication strategy using our email as the username field */
 // userSchema.plugin(passportLocalMongoose, { usernameField: "email" });
@@ -69,4 +69,5 @@ userSchema.pre("findOne", autoPopulatePostedBy);
 // Update, this plugin was breaking and couldn't find a solution.
 // userSchema.plugin(mongodbErrorHandler);
 
-module.exports = mongoose.model("House", userSchema);
+const Property = mongoose.model("House", houseSchema);
+module.exports = Property
