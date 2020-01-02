@@ -5,6 +5,10 @@ const passportLocalMongoose = require("passport-local-mongoose");
 
 const userSchema = new mongoose.Schema(
   {
+    name: {
+      type: ObjectId,
+      ref: "Name"
+    },
     recentSales: {
       type: Number,
       required: "Recent Sales Is Required",
@@ -31,12 +35,13 @@ const userSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-const autoPopulateUser = function(next) {
-  this.populate("userId", "_id name avatar")
+const autoPopulateInfo = function(next) {
+  this.populate("userId", "_id name avatar");
+  this.populate("name", "_id firstName middleName lastName")
   next();
 };
 
-userSchema.pre("findOne", autoPopulateUser);
+userSchema.pre("findOne", autoPopulateInfo);
 
 /* passportLocalMongoose takes our User schema and sets up a passport "local" authentication strategy using our email as the username field */
 // userSchema.plugin(passportLocalMongoose, { usernameField: "email" });

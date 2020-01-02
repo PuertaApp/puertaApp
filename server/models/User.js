@@ -5,21 +5,6 @@ const passportLocalMongoose = require("passport-local-mongoose");
 
 const userSchema = new mongoose.Schema(
   {
-    // email: {
-    //   type: String,
-    //   trim: true,
-    //   lowercase: true,
-    //   unique: true,
-    //   required: "Email is required"
-    // },
-    name: {
-      type: String,
-      trim: true,
-      unique: false,
-      minlength: 4,
-      maxlength: 20,
-      required: "Name is required"
-    },
     phone: {
       type: String,
       trim: true,
@@ -36,9 +21,9 @@ const userSchema = new mongoose.Schema(
     role: {
       type: String,
       trim: true,
-      default: 'buyer',
+      default: "buyer",
       enum: ["buyer", "agent", "rep"]
-     },
+    },
     buyerId: {
       type: ObjectId,
       ref: "Buyer"
@@ -56,13 +41,15 @@ const userSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-// const autoPopulateFollowingAndFollowers = function(next) {
-//   this.populate("following", "_id name avatar");
+// const autoPopulateInfo = function(next) {
+//   if(this.role === "buyer"){
+//     this.populate("buyer", "_id name avatar");
+//   }
 //   this.populate("followers", "_id name avatar");
 //   next();
 // };
 
-// userSchema.pre("findOne", autoPopulateFollowingAndFollowers);
+// userSchema.pre("findOne", autoPopulateInfo);
 
 /* passportLocalMongoose takes our User schema and sets up a passport "local" authentication strategy using our email as the username field */
 userSchema.plugin(passportLocalMongoose, { usernameField: "phone" });
