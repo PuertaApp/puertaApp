@@ -4,6 +4,7 @@ import Button from '../components/Button';
 
 const ComponentsStyle = styled.div`
   background-color: #f9f9f9;
+  min-height: 100vh;
 `
 const Components = () => {
   return (

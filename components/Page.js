@@ -24,9 +24,9 @@ const GlobalStyle = createGlobalStyle`
       padding: 0;
       margin: 0;
       font-family: 'Fira Sans', sans-serif; 
-      background-color: #F7F8FA;
+      background-color: #F9f9f9;
       width: auto!important; 
-      overflow-x: hidden!important
+      overflow-x: hidden!important;
     }
     body.active {
       overflow: hidden;
