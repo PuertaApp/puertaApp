@@ -10,6 +10,7 @@ class Signin extends React.Component {
     error: "",
     success: "",
     isLoading: false,
+    type: ""
   };
   componentDidMount () {
     if ('serviceWorker' in navigator) {
@@ -45,15 +46,48 @@ class Signin extends React.Component {
     signinUser(user)
       .then(() => Router.push('/')).catch(this.showError)          
   }
+  clearState = () => {
+    console.log(this.state)
+    this.setState({ type: "" })
+  }
   render() {
-    return (
-      <FloatingSearchForm>
-        <div class="search-form">
-            <Button text="Sign in" />
-            <Button text="Sign up" />
+    if(this.state.type === "") {
+      return (
+        <FloatingSearchForm>
+          <div class="search-form">
+              <Button 
+                text="Sign in" 
+                onClick={() => {
+                  this.setState({ type: "signin"})
+                }}
+                clearState={this.clearState}
+              />
+              <Button 
+                text="Sign up" 
+                onClick={() => {                  
+                  this.setState({ type: "signup"})
+                }}
+                clearState={this.clearState}
+              />
+          </div>
+        </FloatingSearchForm> 
+      )
+    } else if (this.state.type === "signin") {
+      return (
+        <div>
+          Signin form
+          <button onClick={this.clearState}>Back</button>
         </div>
-      </FloatingSearchForm> 
-    )
+      )
+    } else {
+      return (
+        <div>
+          Signup form
+          <button onClick={this.clearState}>Back</button>
+        </div>
+      )
+    }
+    
   }
 }
 

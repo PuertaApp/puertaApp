@@ -23,7 +23,7 @@ const ButtonStyle = styled.div`
 `
 
 const Button = (props) => (
-  <ButtonStyle>
+  <ButtonStyle onClick={props.onClick}>
     {props.text}
   </ButtonStyle>
 )
