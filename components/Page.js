@@ -1,14 +1,15 @@
-import React, { Component } from 'react';
-import styled, { ThemeProvider } from 'styled-components';
-// global styles to bump up z index of autocomplete 
-import { createGlobalStyle } from 'styled-components'
-import Meta from './Meta';
+import React, { Component } from "react";
+import styled, { ThemeProvider } from "styled-components";
+// global styles to bump up z index of autocomplete
+import { createGlobalStyle } from "styled-components";
+import Meta from "./Meta";
 // /* ${dom.css()} */ (add this to global styles if it doesn't work)
 
-// styled to bump up z index of autocomplete 
-const theme = {  
-  // theme goes here
-}
+// styled to bump up z index of autocomplete
+const theme = {
+	// theme goes here
+	font: `'Fira Sans', sans-serif;`
+};
 const GlobalStyle = createGlobalStyle`
   @font-face {
       font-family: 'Fira Sans', sans-serif;    
@@ -43,21 +44,23 @@ const GlobalStyle = createGlobalStyle`
       background: rgba(0, 0, 0, 0.4);
     }  
   }
-`
+`;
 const WrapperDiv = styled.div`
-  overflow: hidden;
-`
+	overflow: hidden;
+`;
 
 class Page extends Component {
-  render() {
-    return (
-      <WrapperDiv>
-        <GlobalStyle />
-        <Meta />          
-        {this.props.children}
-      </WrapperDiv> 
-    )
-  }
+	render() {
+		return (
+			<ThemeProvider theme={theme}>
+				<WrapperDiv>
+					<GlobalStyle />
+					<Meta />
+					{this.props.children}
+				</WrapperDiv>
+			</ThemeProvider>
+		);
+	}
 }
 
 export default Page;
