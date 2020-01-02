@@ -3,6 +3,7 @@ import FloatingSearchForm from '../components/styles/FloatingSearchForm'
 import Button from '../components/Button'
 import { signinUser } from '../lib/auth';
 import Router from 'next/router';
+import DoorLogo from '../components/icons/DoorLogo'
 
 class Signin extends React.Component {
   state = {
@@ -55,6 +56,8 @@ class Signin extends React.Component {
       return (
         <FloatingSearchForm>
           <div class="search-form">
+            <DoorLogo />
+            <h1>Puerta</h1>
               <Button 
                 text="Sign in" 
                 onClick={() => {
@@ -63,7 +66,7 @@ class Signin extends React.Component {
                 clearState={this.clearState}
               />
               <Button 
-                text="Sign up" 
+                text="New User" 
                 onClick={() => {                  
                   this.setState({ type: "signup"})
                 }}
