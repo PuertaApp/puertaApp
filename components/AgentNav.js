@@ -4,6 +4,7 @@ import NavButton from './styles/NavButton';
 import styled from 'styled-components';
 import HistoryIcon from '../components/icons/HistoryIcon';
 import ListIcon from '../components/icons/ListIcon';
+import HomeIcon from '../components/icons/HomeIcon';
 
 const StyledDiv = styled.div` 
    display: flex;
@@ -18,7 +19,7 @@ const StyledDiv = styled.div`
        padding-top: 5%
    }
 `
-const AgentNav = () => {
+export const AgentNav = () => {
     return(
         <NavBar>
             <StyledDiv>
@@ -43,4 +44,27 @@ const AgentNav = () => {
     )
 }
 
-export default AgentNav;
+export const BuyerNav = () => {
+    return(
+        <NavBar>
+        <StyledDiv>
+        <NavButton><HomeIcon
+            height={25}
+            width={25}
+            /></NavButton>
+        <div>Home</div>
+        </StyledDiv>
+        <StyledDiv>
+        <NavButton><HistoryIcon
+            height={25}
+            width={25}
+            /></NavButton>
+        <div>Agents</div>
+        </StyledDiv>
+        <StyledDiv>
+        <NavButton>Profile</NavButton>
+        <div>Profile</div>
+        </StyledDiv>
+    </NavBar>
+    )
+}
