@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const { ObjectId } = mongoose.Schema;
+const { ObjectId } = mongoose.Schema.Types;
 const mongodbErrorHandler = require("mongoose-mongodb-errors");
 const passportLocalMongoose = require("passport-local-mongoose");
 
@@ -8,13 +8,15 @@ const userSchema = new mongoose.Schema(
     email: {
       type: String,
       trim: true,
-      required: "Email is required",
+      required: "Email is required"
+    },
+    password: {
+      type: String,
+      required: "Enter a valid password"
     },
     phone: {
       type: String,
       trim: true,
-      lowercase: true,
-      unique: true,
       required: "Phone is required"
     },
     countryCode: {
@@ -47,10 +49,8 @@ const userSchema = new mongoose.Schema(
 );
 
 // const autoPopulateInfo = function(next) {
-//   if(this.role === "buyer"){
-//     this.populate("buyer", "_id name avatar");
-//   }
-//   this.populate("followers", "_id name avatar");
+//   this.populate("name", "_id firstName");
+//   // this.populate("followers", "_id name avatar");
 //   next();
 // };
 
@@ -63,4 +63,5 @@ userSchema.plugin(passportLocalMongoose, { usernameField: "email" });
 // Update, this plugin was breaking and couldn't find a solution.
 // userSchema.plugin(mongodbErrorHandler);
 
+// const User = mongoose.model("User", userSchema);
 module.exports = mongoose.model("User", userSchema);
