@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import FloatingSearchForm from '../components/styles/FloatingSearchForm'
+import Button from '../components/Button'
 import { signinUser } from '../lib/auth';
 import Router from 'next/router';
 
@@ -48,22 +49,8 @@ class Signin extends React.Component {
     return (
       <FloatingSearchForm>
         <div class="search-form">
-            <h1>Sign in</h1>
-            <form onSubmit={this.handleSubmit} action="#">
-                <div class="field">
-                    <label>Email</label>
-                    <input name="email" type="email" onChange={this.handleChange}/>
-                </div>                
-                <div class="submit">
-                    <input disabled={this.state.isLoading} type="submit" class="submitBtn" value={this.state.isLoading ? "Signing in" : "Sign in"}/>
-                </div>
-            </form>
-            {/* Error Message */}
-            <div
-              onClick={this.handleClose}
-            >
-              {this.state.error} 
-            </div>
+            <Button text="Sign in" />
+            <Button text="Sign up" />
         </div>
       </FloatingSearchForm> 
     )
