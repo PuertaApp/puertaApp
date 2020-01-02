@@ -3,6 +3,7 @@ const authController = require("../controllers/authController");
 const userController = require("../controllers/userController");
 const postController = require("../controllers/postController");
 const dataController = require("../controllers/dataController");
+const propertyController = require("../controllers/houseController");
 
 const router = express.Router();
 
@@ -13,13 +14,10 @@ const catchErrors = fn => {
   };
 };
 
-/** 
+/**
  *  DATA ROUTE: /api/data
  */
-router.get(
-  "/api/data",
-  dataController.getData
-)
+router.get("/api/data", dataController.getData);
 /**
  * AUTH ROUTES: /api/auth
  */
@@ -110,5 +108,12 @@ router.post(
 );
 router.get("/api/posts/by/:userId", catchErrors(postController.getPostsByUser));
 router.get("/api/posts/feed/:userId", catchErrors(postController.getPostFeed));
+
+//// PROPERTIES
+router.post(
+  "/api/properties",
+  propertyController.validateHouseWrite,
+  propertyController.postNewProperty
+);
 
 module.exports = router;
