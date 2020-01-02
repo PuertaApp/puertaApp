@@ -6,17 +6,33 @@ import HistoryIcon from '../components/icons/HistoryIcon';
 import ListIcon from '../components/icons/ListIcon';
 
 const StyledDiv = styled.div` 
-    margin: 33%
+   display: flex;
+   flex-direction: column;
+   align-content: center; 
+   justify-content: center;
+   font-family: sans-serif;
+   font-size: 12px;
+   div {
+       width: 60px;
+       margin-left: 20%;
+       padding-top: 5%
+   }
 `
 const AgentNav = () => {
     return(
         <NavBar>
             <StyledDiv>
-            <NavButton><ListIcon/></NavButton>
+            <NavButton><ListIcon
+                height={25}
+                width={25}
+                /></NavButton>
             <div>Leads</div>
             </StyledDiv>
             <StyledDiv>
-            <NavButton><HistoryIcon/></NavButton>
+            <NavButton><HistoryIcon
+                height={25}
+                width={25}
+                /></NavButton>
             <div>History</div>
             </StyledDiv>
             <StyledDiv>

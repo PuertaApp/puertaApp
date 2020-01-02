@@ -3,13 +3,8 @@ import styled from 'styled-components';
 const NavButton = styled.button `
 width: 63px;
 height: 63px;
-
-font-family: Roboto;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 30px;
-  color: #96a5c7;
-  background: #f9f9f9;
+color: #96a5c7;
+background: #f9f9f9;
   display: flex;
   justify-content: center;
   align-items: center;
