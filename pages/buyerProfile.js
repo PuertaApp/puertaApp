@@ -1,5 +1,5 @@
 import React from 'react'
-import BuyerProfile from './../components/BuyerProfile'
+import BuyerProfile from '../components/BuyerProfile'
 function buyerProfile() {
     return <BuyerProfile />
 }
