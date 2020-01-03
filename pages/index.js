@@ -4,7 +4,8 @@ import React, { useState, useEffect } from "react";
 
 // getting the URL we're running
 import absoluteUrl from 'next-absolute-url'
-
+// and for prod
+// for dev
 // these are our authentication functions, which take care of grabbing the user object from either the server
 // or the client (where we store it on the window)
 import { getSessionFromClient, getSessionFromServer, redirectUser } from '../lib/auth'
