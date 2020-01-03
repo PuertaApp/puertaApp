@@ -61,7 +61,7 @@ const ImageStyles = styled.div`
         justify-content: space-between;
         button{
             display: flex;
-             justify-content: flex-start;
+            justify-content: flex-start;
             align-items: center;
             background: linear-gradient(130.38deg, #FAFAFA 0%, #F5F5F5 100.03%);
             border: 1px solid rgba(255, 255, 255, 0.6);
@@ -69,7 +69,7 @@ const ImageStyles = styled.div`
             border-radius: 10px;
             box-shadow: 4px 4px 8px rgba(170, 182, 209, 0.4), -6px -6px 12px rgba(255, 255, 255, 0.8);
             height:50px;
-            width: 50px;
+            padding: 0 15px;
         }
     }
 `

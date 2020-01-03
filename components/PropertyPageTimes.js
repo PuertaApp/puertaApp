@@ -10,21 +10,21 @@ export default function PropertyPageTimes() {
                 <div className="icon">
                     <CalendarIcon className="icon"/>
                 </div>
-                <p>3:00</p>
+                <p>3:00 pm</p>
             </div>
 
             <div className="times">
                 <div className="icon">
                     <CalendarIcon className="icon"/>
                 </div>
-                <p>3:00</p>
+                <p>4:00 pm</p>
             </div>
 
             <div className="times">
                 <div className="icon">
                     <CalendarIcon className="icon"/>
                 </div>
-                <p>3:00</p>
+                <p>5:00 pm</p>
             </div>
                 
         </PropertyPageTimesStyles>
