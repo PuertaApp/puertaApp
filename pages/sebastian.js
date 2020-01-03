@@ -1,4 +1,4 @@
-import HasBeenMatched from "../components/HasBeenMatched";
+import HasBeenMatched from "./hasbeenmatched";
 
 const Sebastian = () => {
 	return (

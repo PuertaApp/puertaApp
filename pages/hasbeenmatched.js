@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { useRef } from "react";
+import { useRouter } from "next/router";
 
 const StyledHasBeenMatched = styled.div`
 	@import url("https://fonts.googleapis.com/css?family=Fira+Sans:400,500,600,700&display=swap");
@@ -12,9 +13,8 @@ const StyledHasBeenMatched = styled.div`
 	height: 100vh;
 
 	.container {
-		display: none;
+		display: flex;
 		flex-direction: column;
-		opacity: 0;
 		align-items: center;
 		padding: 2rem;
 		width: 90%;
@@ -92,33 +92,13 @@ const StyledHasBeenMatched = styled.div`
 			}
 		}
 	}
-
-	.modal-open {
-		display: flex;
-		transition: opacity 300ms ease-in-out;
-		opacity: 1;
-	}
 `;
 
 const HasBeenMatched = () => {
-	const containerEl = useRef(null);
-
-	const addModal = () => {
-		console.log("clicked");
-		containerEl.current.classList.add("modal-open");
-	};
-
+	const router = useRouter();
 	return (
 		<StyledHasBeenMatched>
-			<button
-				onClick={() => {
-					addModal();
-				}}
-			>
-				pop-up
-			</button>
-
-			<div className="container" ref={containerEl}>
+			<div className="container">
 				<h4 className="thank-you">Thank you!</h4>
 				<p>
 					You have been matched with our Agent Sebastian Garces. We
@@ -130,7 +110,9 @@ const HasBeenMatched = () => {
 					<p className="phone">(357) 559-8413</p>
 					<p>15 Recent Sales</p>
 				</div>
-				<button>back to property</button>
+				<button onClick={() => router.push("/propertypage")}>
+					back to property
+				</button>
 			</div>
 		</StyledHasBeenMatched>
 	);
