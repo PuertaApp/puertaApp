@@ -58,6 +58,7 @@ nextApp.prepare().then(() => {
     }
     /* Body Parser built-in to Express as of version 4.16 */
     app.use(express.json());
+    
     /* Express Validator will validate form data sent to the backend */
     app.use(expressValidator());
     /* give all Next.js's requests to Next.js server */
