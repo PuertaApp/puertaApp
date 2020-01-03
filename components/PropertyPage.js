@@ -45,11 +45,9 @@ const PickUpAtLocationStyles = styled.div`
 `;
 
 const PropertyPageStyles = styled.div`
-	width: 542px;
+	width: 100%;
 	margin: 0 auto;
-	border: 1px solid lightgrey;
 	height: 100%;
-	background: #e5e5e5;
-	position: relative;
-	max-width: 100%;
+	background: #f5f5f5;
+	padding: 1rem;
 `;

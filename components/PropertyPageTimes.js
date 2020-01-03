@@ -48,9 +48,9 @@ export default function PropertyPageTimes(props) {
 }
 
 const PropertyPageTimesStyles = styled.div`
-	width: 542px;
+	width: 100%;
 	margin: 0 auto;
-	border: 1px solid lightgrey;
+	border: 1px solid white;
 	height: 100%;
 	background: linear-gradient(165.12deg, #fafafa 0%, #f5f5f5 100.03%);
 	border-radius: 41px;

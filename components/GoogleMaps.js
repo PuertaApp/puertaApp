@@ -92,6 +92,7 @@ class GoogleMaps extends Component {
 			lat: crd.latitude,
 			lng: crd.longitude
 		});
+		console.log(this.state);
 
 		if (
 			this.state.target.latitude === crd.latitude &&
