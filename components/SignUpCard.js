@@ -84,11 +84,11 @@ const StyledSignUpCard = styled.div`
 	}
 `;
 
-const submitForm = event => {
-	event.preventDefault();
-};
-
-const SignUpCard = () => {
+const SignUpCard = props => {
+	const submitForm = event => {
+		event.preventDefault();
+		props.e();
+	};
 	return (
 		<StyledSignUpCard>
 			<div className="container">
