@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 const NavButton = styled.button `
-width: 63px;
-height: 63px;
+width: 44px;
+height: 44px;
 color: #96a5c7;
 z-index: 1000;
 background: #f9f9f9;

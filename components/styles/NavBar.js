@@ -10,7 +10,7 @@ flex: 1;
 bottom: 0;
 margin: 0;
 width: 100%;
-min-height: 120px;
+min-height: 70px;
 `
 
 export default NavBar;
