@@ -1,9 +1,9 @@
-import SmallPropertyCardMap from "../components/SmallPropertyCardMap";
+import HasBeenMatched from "../components/HasBeenMatched";
 
 const Sebastian = () => {
 	return (
 		<div>
-			<SmallPropertyCardMap />
+			<HasBeenMatched />
 		</div>
 	);
 };
