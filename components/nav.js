@@ -7,6 +7,7 @@ import ListIcon from './icons/ListIcon';
 import HomeIcon from './icons/HomeIcon';
 import BurgerIcon from './icons/BurgerIcon';
 import Link from 'next/link';
+import DoorLogo from './icons/DoorLogo'
 
 const StyledDiv = styled.div` 
    display: flex;
@@ -112,7 +113,12 @@ export const BuyerNav = () => {
 
 export const PropRepNav = () => {
     return(
+      <>
+      <DoorLogo
+        height={30}
+        width={30}/>
         <NavBar>
+        
         <StyledDiv>
         <NavButton><HomeIcon
             height={25}
@@ -136,5 +142,6 @@ export const PropRepNav = () => {
         <a className="smallName">Add Property</a>
         </StyledDiv>
     </NavBar>
+    </>
     )
 }
