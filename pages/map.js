@@ -1,5 +1,5 @@
 import GoogleMaps from '../components/GoogleMaps';
-import { AgentNav } from '../components/Nav'
+import { AgentNav } from '../components/nav'
 import MapButton from '../components/styles/MapButton'
 import ListIcon from '../components/icons/ListIcon'
 import Link from 'next/link';
