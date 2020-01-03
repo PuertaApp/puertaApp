@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import GoogleMapReact from 'google-map-react'; 
 import styled from 'styled-components'
 import SmallPropertyCardMap from './SmallPropertyCardMap';
+import Router from 'next/router'
 
 const Photo = styled.img`
   height: 32px;
@@ -20,6 +21,7 @@ class GoogleMaps extends Component {
     zoom: 14
   };
   state = {
+    showMapCard: false,
     lat: this.props.coords.lat,
     lng: this.props.coords.lng, 
     userAddress: null,
@@ -102,28 +104,20 @@ class GoogleMaps extends Component {
   }
   render() {    
     return (      
-<<<<<<< HEAD
-      <div>
-        <button onClick={this.getLocation}>Get coords</button>
-        <button onClick={this.stopLocation}>Stop</button>
-        {this.state.latitude} // {this.state.longitude} // {this.state.id} // {this.state.time}
-        {/* // Important! Always set the container height explicitly */}
-        <div style={{ height: '81vh', width: '100%' }}>
-=======
       <div>                
         {/* // Important! Always set the container height explicitly */}       
         <div style={{ height: '85vh', width: '100%' }}>
->>>>>>> 5757d208d27977dc173c816017f7de02c728e5e3
           <GoogleMapReact            
             bootstrapURLKeys={{ key: process.env.GOOGLE_MAPS }}
             center={{lat: this.state.lat, lng: this.state.lng}}
             defaultZoom={this.props.zoom}
-            options={{fullscreenControl: false}}
+            options={{fullscreenControl: false}}            
           >             
-            <SmallPropertyCardMap 
-              lat={this.state.lat}
-              lng={this.state.lng}
-            />
+            <div lat={this.state.lat}
+                lng={this.state.lng}   onClick={() => Router.push('/propertypage')}>
+              <SmallPropertyCardMap                             
+              />
+            </div>
             {/* <AnyReactComponent
               lat={this.state.latitude}
               lng={this.state.longitude}

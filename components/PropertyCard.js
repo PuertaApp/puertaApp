@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import EyeIcon from './icons/EyeIcon'
 import HeartIconFilled from './icons/HeartIconFilled'
 
-function PropertyCard() {
+function PropertyCard({ property }) {
     return (
         <PropertyCardStyles>
             <div className='container'>
@@ -12,15 +12,15 @@ function PropertyCard() {
                 </div>
                 <div className='property-card-text'>
                     <div className='card-text-top'>
-                        <h3>$ 374900</h3>
+                        <h3>{property.price}</h3>
                         <div className='house-info'>
-                            <p className='bds'> 4 bds <span>{" | "}</span> </p> 
-                            <p className='brs'> <span>{" | "} </span> 3 brs <span>{" | "}</span> </p> 
-                            <p className='sqft'><span>{" | "}</span> 2839 sqft</p>
+                            <p className='bds'> {`${property.bedrooms} bds `}<span>{` | `}</span> </p> 
+                            <p className='brs'> <span>{` | `} </span> {`${property.bathrooms} brs`} <span>{` | `}</span> </p> 
+                            <p className='sqft'><span>{` | `}</span> {`${property.size} sqft`}</p>
                         </div>
                     </div>
                     <div className='card-text-middle'>
-                        <h4>1234 Millers Rd, Cleveland, OH 44066</h4>
+                        <h4>{property.streetAddress}</h4>
                         <div className='house-availability'>
                             <div className='status'></div>
                             <p>House available for showings now</p>

@@ -1,5 +1,7 @@
 import React, {useState} from 'react';
 import styled from 'styled-components'
+import CaratLeft from './icons/CaratLeft'
+import CaratRight from './icons/CaratRight'
 
 function PropertyImageCarousel() {
     const[imageCount, setImageCount ] = useState(0);
@@ -35,8 +37,8 @@ function PropertyImageCarousel() {
                 : 
             <img src={`${image[imageCount]}`}/>} 
             <div className='controls'>
-                <button onClick={handlePrevImage}>Prev</button>
-                <button onClick={handleNextImage}>Next</button>
+                <button onClick={handlePrevImage}><CaratLeft/></button>
+                <button onClick={handleNextImage}><CaratRight/></button>
             </div>
         </ImageStyles>
     )
@@ -59,7 +61,7 @@ const ImageStyles = styled.div`
         justify-content: space-between;
         button{
             display: flex;
-             justify-content: flex-start;
+            justify-content: flex-start;
             align-items: center;
             background: linear-gradient(130.38deg, #FAFAFA 0%, #F5F5F5 100.03%);
             border: 1px solid rgba(255, 255, 255, 0.6);
@@ -67,7 +69,7 @@ const ImageStyles = styled.div`
             border-radius: 10px;
             box-shadow: 4px 4px 8px rgba(170, 182, 209, 0.4), -6px -6px 12px rgba(255, 255, 255, 0.8);
             height:50px;
-            width: 50px;
+            padding: 0 15px;
         }
     }
 `
