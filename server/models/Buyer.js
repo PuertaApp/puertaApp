@@ -9,8 +9,8 @@ const buyerSchema = new mongoose.Schema(
       type: ObjectId,
       ref: "Name"
     },
-    favoriteHouses: [{ type: ObjectId, ref: "House", default: [] }],
-    viewedHouses: [{ type: ObjectId, ref: "House" , default: [] }],
+    favoriteHouses: [{ type: ObjectId, ref: "House" }],
+    viewedHouses: [{ type: ObjectId, ref: "House" }],
     dislikedHouses: [{ type: ObjectId, ref: "House" }],
     userId: {
       type: ObjectId,

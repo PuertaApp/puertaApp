@@ -48,13 +48,20 @@ const userSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-// const autoPopulateInfo = function(next) {
-//   this.populate("name", "_id firstName");
-//   // this.populate("followers", "_id name avatar");
-//   next();
-// };
+const autoPopulateInfo = function(next) {
+  if(this.role === "buyer"){
+    this.populate("buyerId", "_id firstName");
+  }
+  if(this.role === "agent"){
+    this.populate("agentId", "_id firstName");
+  }
+  if(this.role === "rep"){
+    this.populate("repId", "_id firstName");
+  }
+  next();
+};
 
-// userSchema.pre("findOne", autoPopulateInfo);
+userSchema.pre("findOne", autoPopulateInfo);
 
 /* passportLocalMongoose takes our User schema and sets up a passport "local" authentication strategy using our email as the username field */
 userSchema.plugin(passportLocalMongoose, { usernameField: "email" });
