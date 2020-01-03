@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import GoogleMapReact from 'google-map-react'; 
 import styled from 'styled-components'
-
+import SmallPropertyCardMap from './SmallPropertyCardMap';
 
 const Photo = styled.img`
   height: 32px;
@@ -111,11 +111,15 @@ class GoogleMaps extends Component {
             defaultZoom={this.props.zoom}
             options={{fullscreenControl: false}}
           >             
-            <AnyReactComponent
+            <SmallPropertyCardMap 
+              lat={this.state.lat}
+              lng={this.state.lng}
+            />
+            {/* <AnyReactComponent
               lat={this.state.latitude}
               lng={this.state.longitude}
               text={'https://image.flaticon.com/icons/png/512/171/171239.png'} 
-            />
+            /> */}
             {/* <AnyReactComponent
               lat={6.208}
               lng={-75.563}
