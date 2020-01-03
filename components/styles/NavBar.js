@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const NavBar = styled.div `
-
+background: #f9f9f9;
 display: flex;
 position: fixed;
 justify-content: space-evenly;

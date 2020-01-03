@@ -27,6 +27,7 @@ const StyledDiv = styled.div`
    justify-content: center;
    font-family: sans-serif;
    font-size: 10px;
+   
    div {
      display: none
    }

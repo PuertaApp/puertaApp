@@ -1,11 +1,12 @@
 
-import PropertyCard from '../components/PropertyCard';
+import PropertyList from '../components/PropertyList';
+import Nav from './nav';
 
 const Homepage = () => {
     return(
         <>
-        <PropertyCard />
-        <PropertyCard />
+        <PropertyList />
+        <Nav />
         </>
     )
 }
