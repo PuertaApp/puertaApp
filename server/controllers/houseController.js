@@ -76,6 +76,10 @@ exports.getAllLeadsById = async (req, res) => {
   res.status(200).json(req.property.leads);
 };
 
+exports.getAllProperties = async (req,res) => {
+  
+}
+
 // exports.addToViewedPropertiesLeads = async (req,res) => {
 //   const userId = req.body.userId
 //   if(!userId){

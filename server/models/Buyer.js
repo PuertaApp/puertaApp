@@ -9,8 +9,8 @@ const buyerSchema = new mongoose.Schema(
       type: ObjectId,
       ref: "Name"
     },
-    favoriteHouses: [{ type: ObjectId, ref: "House", default: [] }],
-    viewedHouses: [{ type: ObjectId, ref: "House" , default: [] }],
+    favoriteHouses: [{ type: ObjectId, ref: "House" }],
+    viewedHouses: [{ type: ObjectId, ref: "House" }],
     dislikedHouses: [{ type: ObjectId, ref: "House" }],
     userId: {
       type: ObjectId,
@@ -28,6 +28,7 @@ const autoPopulateInfo = function(next) {
 };
 
 buyerSchema.pre("findOne", autoPopulateInfo);
+buyerSchema.pre("create", autoPopulateInfo);
 
 /* passportLocalMongoose takes our User schema and sets up a passport "local" authentication strategy using our email as the username field */
 // userSchema.plugin(passportLocalMongoose, { usernameField: "email" });

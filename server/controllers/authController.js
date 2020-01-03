@@ -3,7 +3,9 @@ const User = mongoose.model("User");
 const passport = require("passport");
 const Name = require("../models/Name");
 const Buyer = require("../models/Buyer");
-const { roles } = require("../roles")
+const Agent = require("../models/Agent");
+const Rep = require("../models/Rep");
+const { roles } = require("../roles");
 
 exports.validateSignup = (req, res, next) => {
   // req.sanitizeBody("name");
@@ -52,12 +54,12 @@ exports.signup = async (req, res) => {
   });
 
   if (user.role === "agent") {
-    const agent = await Buyer.create({
+    const agent = await Agent.create({
       name: (await newName)._id
     });
     user.agentId = (await agent)._id;
   } else if (user.role === "rep") {
-    const rep = await Buyer.create({
+    const rep = await Rep.create({
       name: (await newName)._id
     });
     user.repId = (await rep)._id;
@@ -111,16 +113,16 @@ exports.checkAuth = (req, res, next) => {
 
 exports.grantAccess = (action, resource) => {
   return async (req, res, next) => {
-   try {
-    const permission = roles.can(req.user.role)[action](resource);
-    if (!permission.granted) {
-     return res.status(401).json({
-      error: "You don't have enough permission to perform this action"
-     });
+    try {
+      const permission = roles.can(req.user.role)[action](resource);
+      if (!permission.granted) {
+        return res.status(401).json({
+          error: "You don't have enough permission to perform this action"
+        });
+      }
+      next();
+    } catch (error) {
+      next(error);
     }
-    next()
-   } catch (error) {
-    next(error)
-   }
-  }
-}
+  };
+};

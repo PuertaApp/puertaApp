@@ -48,6 +48,7 @@ router.put(
   catchErrors(userController.deleteFollower)
 );
 
+// Profile
 router
   .route("/api/users/:userId")
   .get(userController.getAuthUser)
@@ -128,12 +129,16 @@ router.get(
   propertyController.getAllLeadsById
 );
 
+
 // router.post(
 //   "/api/houseLeadsView/:id",
 //   propertyController.getPropertyId,
 //   propertyController.addToViewedPropertiesLeads
 // );
 
+//// LIKE - DISLIKE HOUSES
+router.put('/api/property/dislike/:id', buyerController.dislikeProperty)
+router.put('/api/property/favorite/:id', buyerController.favoriteProperty)
 /**
  * Buyer ROUTES: /api/users/buyers
  */

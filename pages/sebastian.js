@@ -1,9 +1,9 @@
-import SignUpCard from "../components/signupcard";
+import SmallPropertyCardMap from "../components/SmallPropertyCardMap";
 
 const Sebastian = () => {
 	return (
 		<div>
-			<SignUpCard />
+			<SmallPropertyCardMap />
 		</div>
 	);
 };
