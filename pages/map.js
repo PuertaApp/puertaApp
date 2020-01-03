@@ -4,7 +4,7 @@ class Map extends React.Component {
   render() {
     return (
       <div>
-        {/* <GoogleMaps />      */}
+        <GoogleMaps />     
         <AgentNav /> 
       </div>
     )
