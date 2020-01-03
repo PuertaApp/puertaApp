@@ -126,3 +126,14 @@ exports.grantAccess = (action, resource) => {
     }
   };
 };
+
+// const getRandomAgent = async () => {
+//   const agents = await Agent.find()
+//   const randomNum = Math.floor(Math.random() * agents.length)
+//   console.log(agents)
+//   console.log(randomNum)
+//   const agent = agents[randomNum]
+//   console.log(agent)
+//   console.log(agent._id)
+// // }
+// getRandomAgent()
