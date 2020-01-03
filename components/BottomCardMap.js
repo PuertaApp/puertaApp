@@ -17,6 +17,7 @@ const BottomCardMapStyle = styled.div`
 	margin: 0;
 	width: 100%;
 	min-height: 120px;
+  height: 20vh;
 	border: 1px solid blue;
 	h3 {
 		text-align: center;

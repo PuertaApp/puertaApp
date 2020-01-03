@@ -104,7 +104,7 @@ class GoogleMaps extends Component {
     return (      
       <div>                
         {/* // Important! Always set the container height explicitly */}       
-        <div style={{ height: '100vh', width: '100%' }}>
+        <div style={{ height: '85vh', width: '100%' }}>
           <GoogleMapReact            
             bootstrapURLKeys={{ key: process.env.GOOGLE_MAPS }}
             center={{lat: this.state.lat, lng: this.state.lng}}
