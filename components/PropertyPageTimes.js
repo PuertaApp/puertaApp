@@ -41,6 +41,7 @@ const PropertyPageTimesStyles = styled.div`
         border-radius: 41px;
         box-shadow: 12px 12px 24px rgba(170, 182, 209, 0.4),
            -12px -12px 24px #ffffff;
+        margin-top: 3rem;   
         .times{
             margin: 1rem;  
             display: flex;

@@ -1,5 +1,7 @@
 import React, {useState} from 'react';
 import styled from 'styled-components'
+import CaratLeft from './icons/CaratLeft'
+import CaratRight from './icons/CaratRight'
 
 function PropertyImageCarousel() {
     const[imageCount, setImageCount ] = useState(0);
@@ -35,8 +37,8 @@ function PropertyImageCarousel() {
                 : 
             <img src={`${image[imageCount]}`}/>} 
             <div className='controls'>
-                <button onClick={handlePrevImage}>Prev</button>
-                <button onClick={handleNextImage}>Next</button>
+                <button onClick={handlePrevImage}><CaratLeft/></button>
+                <button onClick={handleNextImage}><CaratRight/></button>
             </div>
         </ImageStyles>
     )
