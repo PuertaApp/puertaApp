@@ -139,10 +139,13 @@ router.get(
 //// LIKE - DISLIKE HOUSES
 router.put('/api/property/dislike/:id', buyerController.dislikeProperty)
 router.put('/api/property/favorite/:id', buyerController.favoriteProperty)
+
 /**
  * Buyer ROUTES: /api/users/buyers
  */
 
 router.get("/api/users/buyers/houses", authController.checkAuth, authController.grantAccess('readAny', 'property'), buyerController.getAllProperties)
+router.post("/api/users/buyers/agent", authController.checkAuth, buyerController.assignAgent)
+router.post("/api/users/buyers/agent/confirm", authController.checkAuth, buyerController.confirmAppointmentWithAgent)
 
 module.exports = router;

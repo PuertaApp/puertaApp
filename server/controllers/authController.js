@@ -55,17 +55,20 @@ exports.signup = async (req, res) => {
 
   if (user.role === "agent") {
     const agent = await Agent.create({
-      name: (await newName)._id
+      name: (await newName)._id,
+      userId: user._id
     });
     user.agentId = (await agent)._id;
   } else if (user.role === "rep") {
     const rep = await Rep.create({
-      name: (await newName)._id
+      name: (await newName)._id,
+      userId: user._id
     });
     user.repId = (await rep)._id;
   } else {
     const buyer = await Buyer.create({
-      name: (await newName)._id
+      name: (await newName)._id,
+      userId: user._id
     });
     user.buyerId = (await buyer)._id;
   }

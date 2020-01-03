@@ -34,7 +34,12 @@ const agentSchema = new mongoose.Schema(
     userId: {
       type: ObjectId,
       ref: "User"
-    }
+    },
+    buyers: [{
+      type: ObjectId,
+      ref: "Buyer",
+      default: []
+    }]
   },
   { timestamps: true }
 );
