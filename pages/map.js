@@ -1,5 +1,9 @@
 import GoogleMaps from '../components/GoogleMaps';
 import { AgentNav } from '../components/Nav'
+import MapButton from '../components/styles/MapButton'
+import ListIcon from '../components/icons/ListIcon'
+import Link from 'next/link';
+import BottomCardMap from '../components/BottomCardMap'
 
 class Map extends React.Component {
   state = {
@@ -23,7 +27,16 @@ class Map extends React.Component {
   render() {
     return (
       <div>
+        <Link href="/list">
+          <MapButton>
+            <ListIcon
+              height={25}
+              width={25}
+              />                                                         
+          </MapButton>                                 
+        </Link>          
         {this.state.lat !== '' ? <GoogleMaps coords={this.state} /> : <div>Loading...</div> }
+        <BottomCardMap />
         <AgentNav /> 
       </div>
     )

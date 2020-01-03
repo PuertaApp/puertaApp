@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import GoogleMapReact from 'google-map-react'; 
 import styled from 'styled-components'
+import SmallPropertyCardMap from './SmallPropertyCardMap';
 
 const Photo = styled.img`
   height: 32px;
@@ -101,22 +102,33 @@ class GoogleMaps extends Component {
   }
   render() {    
     return (      
+<<<<<<< HEAD
       <div>
         <button onClick={this.getLocation}>Get coords</button>
         <button onClick={this.stopLocation}>Stop</button>
         {this.state.latitude} // {this.state.longitude} // {this.state.id} // {this.state.time}
         {/* // Important! Always set the container height explicitly */}
-        <div style={{ height: '100vh', width: '100%' }}>
+        <div style={{ height: '81vh', width: '100%' }}>
+=======
+      <div>                
+        {/* // Important! Always set the container height explicitly */}       
+        <div style={{ height: '85vh', width: '100%' }}>
+>>>>>>> 5757d208d27977dc173c816017f7de02c728e5e3
           <GoogleMapReact            
             bootstrapURLKeys={{ key: process.env.GOOGLE_MAPS }}
             center={{lat: this.state.lat, lng: this.state.lng}}
             defaultZoom={this.props.zoom}
-          >
-            <AnyReactComponent
+            options={{fullscreenControl: false}}
+          >             
+            <SmallPropertyCardMap 
+              lat={this.state.lat}
+              lng={this.state.lng}
+            />
+            {/* <AnyReactComponent
               lat={this.state.latitude}
               lng={this.state.longitude}
               text={'https://image.flaticon.com/icons/png/512/171/171239.png'} 
-            />
+            /> */}
             {/* <AnyReactComponent
               lat={6.208}
               lng={-75.563}

@@ -1,17 +1,20 @@
 import styled from "styled-components";
+import { useRef } from "react";
 
 const StyledHasBeenMatched = styled.div`
 	@import url("https://fonts.googleapis.com/css?family=Fira+Sans:400,500,600,700&display=swap");
 
 	font-family: "Fira Sans", sans-serif;
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	height: 100vh;
 
 	.container {
-		display: flex;
+		display: none;
 		flex-direction: column;
+		opacity: 0;
 		align-items: center;
 		padding: 2rem;
 		width: 90%;
@@ -89,12 +92,33 @@ const StyledHasBeenMatched = styled.div`
 			}
 		}
 	}
+
+	.modal-open {
+		display: flex;
+		transition: opacity 300ms ease-in-out;
+		opacity: 1;
+	}
 `;
 
 const HasBeenMatched = () => {
+	const containerEl = useRef(null);
+
+	const addModal = () => {
+		console.log("clicked");
+		containerEl.current.classList.add("modal-open");
+	};
+
 	return (
 		<StyledHasBeenMatched>
-			<div className="container">
+			<button
+				onClick={() => {
+					addModal();
+				}}
+			>
+				pop-up
+			</button>
+
+			<div className="container" ref={containerEl}>
 				<h4 className="thank-you">Thank you!</h4>
 				<p>
 					You have been matched with our Agent Sebastian Garces. We
