@@ -1,10 +1,13 @@
 import styled from 'styled-components';
 
-const NavButton = styled.button `
-width: 44px;
-height: 44px;
+const MapButton = styled.button `
+width: 63px;
+height: 63px;
 color: #96a5c7;
 z-index: 1000;
+top: 10px;
+right: 10px;
+position: fixed;
 background: #f9f9f9;
   display: flex;
   justify-content: center;
@@ -18,16 +21,6 @@ background: #f9f9f9;
         box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1),
         inset 2px 2px 8px rgba(126, 138, 167, 0.4), inset -4px -4px 10px #ffffff;
     }
-    
-    @media (min-width:900px){
-        width: 100px;
-        height: 40px;
-        margin-left: 5px;
-        font-size: 14px;
-        
-       
-    }
-
 `
 
-export default NavButton;
+export default MapButton;

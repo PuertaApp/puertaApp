@@ -17,6 +17,7 @@ max-height: 120px;
     
     justify-content: flex-end;
 }
+min-height: 70px;
 `
 
 export default NavBar;
