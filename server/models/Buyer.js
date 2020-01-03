@@ -15,6 +15,10 @@ const buyerSchema = new mongoose.Schema(
     userId: {
       type: ObjectId,
       ref: "User"
+    },
+    agentId: {
+      type: ObjectId,
+      ref: "Agent"
     }
   },
   /* gives us "createdAt" and "updatedAt" fields automatically */
@@ -28,6 +32,7 @@ const autoPopulateInfo = function(next) {
 };
 
 buyerSchema.pre("findOne", autoPopulateInfo);
+buyerSchema.pre("findById", autoPopulateInfo);
 buyerSchema.pre("create", autoPopulateInfo);
 
 /* passportLocalMongoose takes our User schema and sets up a passport "local" authentication strategy using our email as the username field */
