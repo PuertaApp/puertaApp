@@ -1,7 +1,7 @@
 // useEffect is the hook version of ComponentDidMount, which we're using to register our service worker.
 // https://medium.com/@felippenardi/how-to-do-componentdidmount-with-react-hooks-553ba39d1571 
 import React, { useState, useEffect } from "react";
-import { AgentNav, PropRepNav, BuyerNav } from '../components/Nav'
+import { AgentNav, PropRepNav, BuyerNav } from '../components/nav'
 // getting the URL we're running
 import absoluteUrl from 'next-absolute-url'
 // and for prod
