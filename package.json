@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "node server/socket.js",
+    "dev": "nodemon server/socket.js",
     "start": "NODE_ENV=production node server/socket.js",
     "build": "next build",
     "heroku-postbuild": "npm run build",
@@ -39,5 +39,8 @@
     "socket.io-client": "^2.3.0",
     "styled-components": "^4.4.1",
     "sw-precache-webpack-plugin": "^0.11.4"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
   }
 }
