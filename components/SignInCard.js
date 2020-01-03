@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { useRouter } from 'next/router'
 import Link from 'next/link';
+import { signinUser } from '../lib/auth';
 
 const StyledSignInCard = styled.div`
 	@import url("https://fonts.googleapis.com/css?family=Fira+Sans&display=swap");
@@ -97,7 +98,14 @@ const handleClick = e => {
   Router.push("/signup")
 }
 const submitForm = event => {
-	event.preventDefault();
+  event.preventDefault();
+  const user = { email, password };
+  this.setState({ isLoading: true, error: "" });
+  signinUser(user)
+    .then(() => {
+      Router.push("/");
+    })
+    .catch(this.showError);
 };
 
 const SignInCard = (props) => {

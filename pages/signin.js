@@ -4,7 +4,7 @@ import Button from "../components/Button";
 import { signinUser } from "../lib/auth";
 import Router from "next/router";
 import DoorLogo from "../components/icons/DoorLogo";
-import SignUpCard from "../components/SignUpCard";
+import SignInCard from "../components/SignInCard";
 import fetch from "isomorphic-fetch";
 
 class Signin extends React.Component {
@@ -42,18 +42,12 @@ class Signin extends React.Component {
 		this.setState({ error, isLoading: false });
 	};
 	handleSubmit = event => {
-		const { email } = this.state;
 		const user = {
 			email: "test@test.com",
 			password: "pass",
 			phone: "5506659213",
 			role: "buyer"
 		};
-		fetch("http://localhost:3000/api/auth/signup", user)
-			.then(res => res.json())
-			.then(res => {
-				console.log(res);
-			});
 		event.preventDefault();
 		this.setState({ isLoading: true });
 		signinUser(user)
