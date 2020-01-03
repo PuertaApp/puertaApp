@@ -9,6 +9,15 @@ import BurgerIcon from './icons/BurgerIcon';
 import Link from 'next/link';
 import DoorLogo from './icons/DoorLogo'
 
+const StyledLogo = styled.div`
+  margin-right: 405px;
+  margin-top: 10px;
+  display: none;
+  @media screen and (min-width: 900px){
+    display: block
+  }
+`
+
 const StyledDiv = styled.div` 
    display: flex;
    z-index: 1000;   
@@ -41,6 +50,11 @@ const StyledDiv = styled.div`
 export const AgentNav = () => {
     return(
         <NavBar>
+          <StyledLogo>
+        <DoorLogo
+        height={30}
+        width={30}/>
+        </StyledLogo>
             <StyledDiv>
               <Link href="/leads">
                 <NavButton>
@@ -82,6 +96,11 @@ export const AgentNav = () => {
 export const BuyerNav = () => {
     return(
         <NavBar>
+          <StyledLogo>
+        <DoorLogo
+        height={30}
+        width={30}/>
+        </StyledLogo>
         <StyledDiv>
           <Link href="/">
         <NavButton><HomeIcon
@@ -114,11 +133,13 @@ export const BuyerNav = () => {
 export const PropRepNav = () => {
     return(
       <>
-      <DoorLogo
+      
+        <NavBar>
+          <StyledLogo>
+        <DoorLogo
         height={30}
         width={30}/>
-        <NavBar>
-        
+        </StyledLogo>
         <StyledDiv>
         <NavButton><HomeIcon
             height={25}

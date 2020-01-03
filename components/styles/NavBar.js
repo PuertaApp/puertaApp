@@ -11,13 +11,14 @@ bottom: 0;
 margin: 0;
 width: 100%;
 max-height: 120px;
-
+min-height: 70px;
 @media (min-width:900px){
     top:0;
+    padding-bottom: 80px;
     
     justify-content: flex-end;
 }
-min-height: 70px;
+
 `
 
 export default NavBar;
