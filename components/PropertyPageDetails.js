@@ -3,45 +3,6 @@ import styled from "styled-components";
 import HeartIconFilled from "./icons/HeartIconFilled";
 import EyeIcon from "./icons/EyeIcon";
 
-function PropertyPageDetails() {
-	return (
-		<PropertyPageDetailsStyles>
-			<div className="house-details-top">
-				<h3>$ 374900</h3>
-				<h4>1234 Millers Rd, Cleveland, OH 44066</h4>
-				<div className="house-info">
-					<p className="bds"> 4 bds {" | "} </p>
-					<p className="brs"> 3 brs </p>
-					<p className="sqft"> {" | "}2839 sqft</p>
-				</div>
-				<div className="house-availability">
-					<div className="status"></div>
-					<p>House available for showings now</p>
-				</div>
-			</div>
-			<div className="house-details-middle">
-				<div className="user-favorite-svg">
-					<HeartIconFilled width={60} height={60} />
-					<p>Click to favorite this property</p>
-				</div>
-				<div className="user-dislike-svg">
-					<EyeIcon width={60} height={60} />
-					<p>Click to dislike this property</p>
-				</div>
-			</div>
-			<div className="house-details-bottom">
-				<p>
-					This 2,830 square foot single family home has 4 bedrooms and
-					3.0 bathrooms. It is located at 1234 Millers Rd, Cleveland,
-					Ohio.
-				</p>
-			</div>
-		</PropertyPageDetailsStyles>
-	);
-}
-
-export default PropertyPageDetails;
-
 const PropertyPageDetailsStyles = styled.div`
 	.house-details-top {
 		padding-left: 10px;
@@ -49,7 +10,7 @@ const PropertyPageDetailsStyles = styled.div`
 			font-family: Fira Sans;
 			font-style: normal;
 			font-weight: normal;
-			font-size: 56px;
+			font-size: 45px;
 			line-height: 67px;
 			color: #141940;
 			margin: 15px 0px;
@@ -108,6 +69,7 @@ const PropertyPageDetailsStyles = styled.div`
 		}
 	}
 	.house-details-middle {
+    margin-top: 2rem;
 		padding-left: 10px;
 		.user-favorite-svg,
 		.user-dislike-svg {
@@ -115,7 +77,7 @@ const PropertyPageDetailsStyles = styled.div`
 			justify-content: flex-start;
 			align-items: center;
 			margin-right: 15px;
-			margin-top: 10px;
+			margin-top: 2rem;
 			svg {
 				display: flex;
 				justify-content: flex-start;
@@ -137,7 +99,7 @@ const PropertyPageDetailsStyles = styled.div`
 				font-family: Fira Sans;
 				font-style: normal;
 				font-weight: normal;
-				font-size: 28px;
+				font-size: 20px;
 				line-height: 34px;
 				/* identical to box height */
 				color: rgba(0, 0, 0, 0.5);
@@ -145,15 +107,57 @@ const PropertyPageDetailsStyles = styled.div`
 		}
 	}
 	.house-details-bottom {
+    margin-top: 3rem;
 		padding: 0px 0px 0px 10px;
 		p {
 			font-family: Fira Sans;
 			font-style: normal;
 			font-weight: normal;
-			font-size: 28px;
+			font-size: 20px;
 			line-height: 34px;
 
 			color: #141940;
 		}
 	}
 `;
+
+
+function PropertyPageDetails() {
+	return (
+		<PropertyPageDetailsStyles>
+			<div className="house-details-top">
+				<h3>$ 374900</h3>
+				<h4>1234 Millers Rd, Cleveland, OH 44066</h4>
+				<div className="house-info">
+					<p className="bds"> 4 bds {" | "} </p>
+					<p className="brs"> 3 brs </p>
+					<p className="sqft"> {" | "}2839 sqft</p>
+				</div>
+				<div className="house-availability">
+					<div className="status"></div>
+					<p>House available for showings now</p>
+				</div>
+			</div>
+			<div className="house-details-middle">
+				<div className="user-favorite-svg">
+					<HeartIconFilled width={60} height={60} />
+					<p>Click to favorite this property</p>
+				</div>
+				<div className="user-dislike-svg">
+					<EyeIcon width={60} height={60} />
+					<p>Click to dislike this property</p>
+				</div>
+			</div>
+			<div className="house-details-bottom">
+				<p>
+					This 2,830 square foot single family home has 4 bedrooms and
+					3.0 bathrooms. It is located at 1234 Millers Rd, Cleveland,
+					Ohio.
+				</p>
+			</div>
+		</PropertyPageDetailsStyles>
+	);
+}
+
+export default PropertyPageDetails;
+

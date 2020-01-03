@@ -7,32 +7,6 @@ import PropertyPageProperties from "./PropertyPageProperties";
 import PickUpAtLocation from "../components/PickUpAtLocation";
 import { useState } from "react";
 
-function PropertyPage() {
-	const [addModal, setAddModal] = useState(false);
-	const [time, setTime] = useState("");
-
-	return (
-		<PropertyPageStyles>
-			<PropertyImageCarousel />
-			<PropertyPageDetails />
-			<PropertyPageTimes
-				addModal={addModal}
-				setAddModal={setAddModal}
-				setTime={setTime}
-			/>
-			<PropertyPageProperties />
-			<PickUpAtLocationStyles>
-				<PickUpAtLocation
-					addPopUp={addModal ? "modal-popup" : ""}
-					time={time}
-				/>
-			</PickUpAtLocationStyles>
-		</PropertyPageStyles>
-	);
-}
-
-export default PropertyPage;
-
 const PickUpAtLocationStyles = styled.div`
 	position: fixed;
 	top: 50vh;
@@ -51,3 +25,31 @@ const PropertyPageStyles = styled.div`
 	background: #f5f5f5;
 	padding: 1rem;
 `;
+
+
+function PropertyPage() {
+	const [addModal, setAddModal] = useState(false);
+	const [time, setTime] = useState("");
+
+	return (
+		<PropertyPageStyles>
+			<PropertyImageCarousel />
+			<PropertyPageDetails />
+			<PropertyPageTimes
+				addModal={addModal}
+				setAddModal={setAddModal}
+				setTime={setTime}
+			/>
+			{/* <PropertyPageProperties /> */}
+			<PickUpAtLocationStyles>
+				<PickUpAtLocation
+					addPopUp={addModal ? "modal-popup" : ""}
+					time={time}
+				/>
+			</PickUpAtLocationStyles>
+		</PropertyPageStyles>
+	);
+}
+
+export default PropertyPage;
+
