@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const NavBar = styled.div `
-
+z-index: 1000;
 display: flex;
 position: fixed;
 justify-content: space-evenly;
