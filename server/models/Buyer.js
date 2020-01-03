@@ -28,6 +28,7 @@ const autoPopulateInfo = function(next) {
 };
 
 buyerSchema.pre("findOne", autoPopulateInfo);
+buyerSchema.pre("create", autoPopulateInfo);
 
 /* passportLocalMongoose takes our User schema and sets up a passport "local" authentication strategy using our email as the username field */
 // userSchema.plugin(passportLocalMongoose, { usernameField: "email" });
