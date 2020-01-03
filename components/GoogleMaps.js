@@ -102,9 +102,18 @@ class GoogleMaps extends Component {
   }
   render() {    
     return (      
+<<<<<<< HEAD
+      <div>
+        <button onClick={this.getLocation}>Get coords</button>
+        <button onClick={this.stopLocation}>Stop</button>
+        {this.state.latitude} // {this.state.longitude} // {this.state.id} // {this.state.time}
+        {/* // Important! Always set the container height explicitly */}
+        <div style={{ height: '81vh', width: '100%' }}>
+=======
       <div>                
         {/* // Important! Always set the container height explicitly */}       
         <div style={{ height: '85vh', width: '100%' }}>
+>>>>>>> 5757d208d27977dc173c816017f7de02c728e5e3
           <GoogleMapReact            
             bootstrapURLKeys={{ key: process.env.GOOGLE_MAPS }}
             center={{lat: this.state.lat, lng: this.state.lng}}
