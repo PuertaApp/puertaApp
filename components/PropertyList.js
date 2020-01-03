@@ -7,7 +7,7 @@ import Link from 'next/link';
 const StyledList = styled.div` 
   
     width: 80%;
-    border: 2px solid red  ;
+    
     margin: 10%  ;
     margin-top: 5%;
     display: flex;
