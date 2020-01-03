@@ -5,6 +5,7 @@ const buyerController = require("../controllers/buyerController");
 const postController = require("../controllers/postController");
 const dataController = require("../controllers/dataController");
 const propertyController = require("../controllers/houseController");
+const buyerController = require("../controllers/buyerController");
 
 const router = express.Router();
 
@@ -129,12 +130,16 @@ router.get(
   propertyController.getAllLeadsById
 );
 
+
 // router.post(
 //   "/api/houseLeadsView/:id",
 //   propertyController.getPropertyId,
 //   propertyController.addToViewedPropertiesLeads
 // );
 
+//// LIKE - DISLIKE HOUSES
+router.put('/api/property/dislike/:id', buyerController.dislikeProperty)
+router.put('/api/property/favorite/:id', buyerController.favoriteProperty)
 /**
  * Buyer ROUTES: /api/users/buyers
  */
