@@ -2,6 +2,7 @@ import PropertyCard from './PropertyCard';
 import styled from 'styled-components';
 import MapIcon from './icons/MapIcon'
 import MapButton from './styles/MapButton'
+import Link from 'next/link';
 
 const StyledList = styled.div` 
   
@@ -19,9 +20,11 @@ const StyledList = styled.div`
 const PropertyList = () => {
     return(
         <>
+        <Link href="/map">
         <MapButton>
         <MapIcon />
         </MapButton>
+        </Link>
         <StyledList >
            
         <div className= "card">
