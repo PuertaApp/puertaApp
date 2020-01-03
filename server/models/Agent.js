@@ -14,6 +14,10 @@ const agentSchema = new mongoose.Schema(
       required: "Recent Sales Is Required",
       default: 0, 
     },
+    availability: [{
+      date: {type: Date, default: new Date().getDate()},
+      time: [{type: String, default: ["9:00AM", "12:00PM", "4:00PM"]}]
+    }],
     headline: {
       type: String, 
       trim: true,
