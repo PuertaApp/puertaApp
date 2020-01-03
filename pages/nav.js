@@ -1,4 +1,4 @@
-import {AgentNav, BuyerNav, PropRepNav} from '../components/AgentNav';
+import {AgentNav, BuyerNav, PropRepNav} from '../components/nav';
 import ReactDOM from 'react-dom';
 
 const Nav = (props) => {

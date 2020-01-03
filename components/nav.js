@@ -17,10 +17,14 @@ const StyledDiv = styled.div`
    justify-content: center;
    font-family: sans-serif;
    font-size: 10px;
-   a {
+   .smallName{
        width: 100%;
        text-align: center;
        padding-top: 5%
+       @media screen and (min-width: 900px){
+         display: none;
+        
+       }
    }
 `
 export const AgentNav = () => {
@@ -67,23 +71,30 @@ export const BuyerNav = () => {
     return(
         <NavBar>
         <StyledDiv>
+          <Link href="/">
         <NavButton><HomeIcon
             height={25}
             width={25}
             /></NavButton>
+            </Link>
         <div>Home</div>
         </StyledDiv>
         <StyledDiv>
-        <NavButton><BurgerIcon
+        <Link href="/agents">
+        <NavButton>
+          <BurgerIcon
             height={25}
             width={25}
             /></NavButton>
+            </Link>
         <div>Agents</div>
         </StyledDiv>
         <StyledDiv>
-        <NavButton>Profile</NavButton>
+          <Link href="/profile">
+        <NavButton>Profile</NavButton></Link>
         <div>Profile</div>
         </StyledDiv>
+        
     </NavBar>
     )
 }
@@ -96,22 +107,22 @@ export const PropRepNav = () => {
             height={25}
             width={25}
             /></NavButton>
-        <div>Home</div>
+        <a className ="smallName">Home</a>
         </StyledDiv>
         <StyledDiv>
         <NavButton><BurgerIcon
             height={25}
             width={25}
             /></NavButton>
-        <div>Properties</div>
+        <a className= "smallName">Properties</a>
         </StyledDiv>
         <StyledDiv>
         <NavButton>Reppin</NavButton>
-        <div>Profile</div>
+        <a className="smallName">Profile</a>
         </StyledDiv>
         <StyledDiv>
         <NavButton></NavButton>
-        <div>Add Property</div>
+        <a className="smallName">Add Property</a>
         </StyledDiv>
     </NavBar>
     )
