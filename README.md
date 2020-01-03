@@ -1,5 +1,5 @@
-# Puerta App: Realestate Map 
-*by **Scottie Schneider, Rob Allen, Pedro Prieto, Sebastian Garces, Vital "Frenchy" Boisset, Nedu Robert, Lesley Banadzem,  ***
+# Puerta App: Real estate Map 
+*by **Scottie Schneider, Rob Allen, Pedro Prieto, Sebastian Garces, Vital "Frenchy" Boisset, Nedu Robert, Lesley Banadzem, and  Isla McNeil***
 
 
 # Project Overview
@@ -32,9 +32,10 @@ To get started developing right away and run the project in Develepment mode, cl
  * `$ npm run dev`
 
 ### Backend Server
-
+Mongo DB
 
 ## Functionality
+
 ### Desktop View
 In desktop view, the list sits in a panel that opens and closes left to allow a full screen map view.
 ![enter image description here](https://media.giphy.com/media/8VkgrPdxMh0oo/giphy.gif)
@@ -63,3 +64,9 @@ In desktop view, the list sits in a panel that opens and closes left to allow a 
 ## Attributions
 
  - [google-maps-react](https://github.com/fullstackreact/google-maps-react)
+
+ - [next-js](https://nextjs.org/)
+
+ - [express](https://expressjs.com/)
+
+ - [mongoDB](https://www.mongodb.com/)

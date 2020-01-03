@@ -1,8 +1,10 @@
 const express = require("express");
 const authController = require("../controllers/authController");
 const userController = require("../controllers/userController");
+const buyerController = require("../controllers/buyerController");
 const postController = require("../controllers/postController");
 const dataController = require("../controllers/dataController");
+const propertyController = require("../controllers/houseController");
 
 const router = express.Router();
 
@@ -13,13 +15,10 @@ const catchErrors = fn => {
   };
 };
 
-/** 
+/**
  *  DATA ROUTE: /api/data
  */
-router.get(
-  "/api/data",
-  dataController.getData
-)
+router.get("/api/data", dataController.getData);
 /**
  * AUTH ROUTES: /api/auth
  */
@@ -49,6 +48,7 @@ router.put(
   catchErrors(userController.deleteFollower)
 );
 
+// Profile
 router
   .route("/api/users/:userId")
   .get(userController.getAuthUser)
@@ -110,5 +110,39 @@ router.post(
 );
 router.get("/api/posts/by/:userId", catchErrors(postController.getPostsByUser));
 router.get("/api/posts/feed/:userId", catchErrors(postController.getPostFeed));
+
+//// PROPERTIES
+router.post(
+  "/api/properties",
+  propertyController.validateHouseWrite,
+  propertyController.postNewProperty
+);
+
+
+router.put("/api/properties/:id", propertyController.editProperty);
+
+router.delete("/api/properties/:id", propertyController.deleteProperty);
+
+router.get(
+  "/api/houseLeads/:id",
+  propertyController.getPropertyId,
+  propertyController.getAllLeadsById
+);
+
+
+// router.post(
+//   "/api/houseLeadsView/:id",
+//   propertyController.getPropertyId,
+//   propertyController.addToViewedPropertiesLeads
+// );
+
+//// LIKE - DISLIKE HOUSES
+router.put('/api/property/dislike/:id', buyerController.dislikeProperty)
+router.put('/api/property/favorite/:id', buyerController.favoriteProperty)
+/**
+ * Buyer ROUTES: /api/users/buyers
+ */
+
+router.get("/api/users/buyers/houses", authController.checkAuth, authController.grantAccess('readAny', 'property'), buyerController.getAllProperties)
 
 module.exports = router;

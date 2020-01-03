@@ -10,32 +10,20 @@ import absoluteUrl from 'next-absolute-url'
 // or the client (where we store it on the window)
 import { getSessionFromClient, getSessionFromServer, redirectUser } from '../lib/auth'
 
-// icon test 
-import AtomIcon from '../components/icons/AtomIcon'
-// end icon test 
-import Layout from '../components/Layout';
-import StoryList from '../components/StoryList'
+import Profile from '../components/Profile'
 
 require('isomorphic-fetch');
 
-const Index = ({ req, classes, auth, houses, userData, user }) => {
+const ProfilePage = ({ req, classes, auth, houses, userData, user }) => {
   console.log(user)
   return (
     <main >
       {auth.user && auth.user._id ? (
         // Auth User Page
-        <div>
-          <AtomIcon height={"24px"} width={"24px"} fill={"#000"}/>
-          Auth user page
-          {
-            houses && <Layout title={'Hacker News Reader'} 
-            description={'A sample PWA built with React and Next.JS'}>
-              <StoryList houses={houses} />
-            </Layout>
-          }  
-          {/* Verifying we can talk to the MongoDB */}
-          Users 
-          {userData.length}    
+        <div>          
+          <Profile />
+          
+          {/* Verifying we can talk to the MongoDB */} 
         </div>
       ) : (
         // Splash Page (UnAuth Page)
@@ -50,7 +38,7 @@ const Index = ({ req, classes, auth, houses, userData, user }) => {
   )
 }
 
-Index.getInitialProps = async function({req, res, query: { userId }}) {
+ProfilePage.getInitialProps = async function({req, res, query: { userId }}) {
   // 1) getting the auth and ensuring it's populated as props
   const auth = req ? getSessionFromServer(req) : getSessionFromClient();
   const currentPath = req ? req.url : window.location.pathname;
@@ -102,4 +90,4 @@ Index.getInitialProps = async function({req, res, query: { userId }}) {
   return { auth, userId, houses, userData, user };
 };
 
-export default Index;
+export default ProfilePage;

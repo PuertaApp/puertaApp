@@ -1,7 +1,11 @@
 import styled from 'styled-components'
 import FloatingSearchForm from '../components/styles/FloatingSearchForm'
+import Button from '../components/Button'
 import { signinUser } from '../lib/auth';
 import Router from 'next/router';
+import DoorLogo from '../components/icons/DoorLogo'
+import SignUpCard from '../components/SignUpCard';
+import SignInCard from '../components/SignInCard';
 
 class Signin extends React.Component {
   state = {
@@ -9,6 +13,7 @@ class Signin extends React.Component {
     error: "",
     success: "",
     isLoading: false,
+    type: "signin"
   };
   componentDidMount () {
     if ('serviceWorker' in navigator) {
@@ -44,31 +49,18 @@ class Signin extends React.Component {
     signinUser(user)
       .then(() => Router.push('/')).catch(this.showError)          
   }
+  clearState = () => {    
+    if(this.state.type === "signin"){
+      this.setState({ type: "signup" })
+    } else {
+      this.setState({ type: "signin"})
+    }
+  }
   render() {
     return (
-      <FloatingSearchForm>
-        <div class="search-form">
-            <h1>Sign in</h1>
-            <form onSubmit={this.handleSubmit} action="#">
-                <div class="field">
-                    <label>Email</label>
-                    <input name="email" type="email" onChange={this.handleChange}/>
-                </div>                
-                <div class="submit">
-                    <input disabled={this.state.isLoading} type="submit" class="submitBtn" value={this.state.isLoading ? "Signing in" : "Sign in"}/>
-                </div>
-            </form>
-            {/* Error Message */}
-            <div
-              onClick={this.handleClose}
-            >
-              {this.state.error} 
-            </div>
-        </div>
-      </FloatingSearchForm> 
+      <SignInCard />
     )
   }
 }
-
 
 export default Signin;
