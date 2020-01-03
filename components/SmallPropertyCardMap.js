@@ -1,9 +1,8 @@
 import styled from "styled-components";
 
 const StyledSmallPropertyCardMap = styled.div`
-	display: flex;
 	justify-content: center;
-
+  display: flex;
 	.container {
 		background: linear-gradient(119.26deg, #fafafa 0%, #f5f5f5 100.03%);
 		box-shadow: 12px 12px 24px rgba(170, 182, 209, 0.4);
@@ -50,9 +49,9 @@ const StyledSmallPropertyCardMap = styled.div`
 	}
 `;
 
-const SmallPropertyCardMap = () => {
+const SmallPropertyCardMap = (props) => {
 	return (
-		<StyledSmallPropertyCardMap>
+		<StyledSmallPropertyCardMap show={props.show}>
 			<div className="container">
 				<img src="https://picsum.photos/160/120" alt="property image" />
 				<div className="text-container">
