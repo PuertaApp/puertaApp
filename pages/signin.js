@@ -4,6 +4,8 @@ import Button from '../components/Button'
 import { signinUser } from '../lib/auth';
 import Router from 'next/router';
 import DoorLogo from '../components/icons/DoorLogo'
+import SignUpCard from '../components/SignUpCard';
+import SignInCard from '../components/SignInCard';
 
 class Signin extends React.Component {
   state = {
@@ -11,7 +13,7 @@ class Signin extends React.Component {
     error: "",
     success: "",
     isLoading: false,
-    type: ""
+    type: "signin"
   };
   componentDidMount () {
     if ('serviceWorker' in navigator) {
@@ -47,52 +49,18 @@ class Signin extends React.Component {
     signinUser(user)
       .then(() => Router.push('/')).catch(this.showError)          
   }
-  clearState = () => {
-    console.log(this.state)
-    this.setState({ type: "" })
+  clearState = () => {    
+    if(this.state.type === "signin"){
+      this.setState({ type: "signup" })
+    } else {
+      this.setState({ type: "signin"})
+    }
   }
   render() {
-    if(this.state.type === "") {
-      return (
-        <FloatingSearchForm>
-          <div class="search-form">
-            <DoorLogo />
-            <h1>Puerta</h1>
-              <Button 
-                text="Sign in" 
-                onClick={() => {
-                  this.setState({ type: "signin"})
-                }}
-                clearState={this.clearState}
-              />
-              <Button 
-                text="New User" 
-                onClick={() => {                  
-                  this.setState({ type: "signup"})
-                }}
-                clearState={this.clearState}
-              />
-          </div>
-        </FloatingSearchForm> 
-      )
-    } else if (this.state.type === "signin") {
-      return (
-        <div>
-          Signin form
-          <button onClick={this.clearState}>Back</button>
-        </div>
-      )
-    } else {
-      return (
-        <div>
-          Signup form
-          <button onClick={this.clearState}>Back</button>
-        </div>
-      )
-    }
-    
+    return (
+      <SignInCard />
+    )
   }
 }
-
 
 export default Signin;
