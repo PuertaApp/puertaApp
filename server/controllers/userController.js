@@ -1,5 +1,8 @@
 const mongoose = require('mongoose')
 const User = mongoose.model('User')
+const Buyer = mongoose.model('Buyer')
+const Agent = mongoose.model('Agent')
+const Rep = mongoose.model('Rep')
 const multer = require('multer');
 const jimp = require('jimp')
 
@@ -13,15 +16,29 @@ exports.getAuthUser = (req, res) => {
     return res.status(403).json({
       message: "You are unauthenticated, please sign in or sign up."
     })
-    res.redirect('/signin')
   }
-  res.json(req.user)
+  res.json(req.profile)
 };
 
 exports.getUserById = async (req, res, next, id) => {
-  const user = await User.findOne({ _id: id });
+  let user = await User.findOne({ _id: id });
+
+  if(user.role === "buyer"){
+    const buyer = await Buyer.findOne({_id: user.buyerId._id})
+    user.buyerId = buyer
+  }
+
+  if(user.role === "agent"){
+    const agent = await Agent.findOne({_id: user.agentId._id})
+    user.agentId = agent
+  }
+
+  if(user.role === "rep"){
+    const rep = await Rep.findOne({_id: user.repId._id})
+    user.repId = rep
+  }
+
   req.profile = user;
-  console.log(req.profile)
   const profileId = mongoose.Types.ObjectId(req.profile._id)
   if (req.user && profileId.equals(req.user._id)) {
     req.isAuthUser = true;
