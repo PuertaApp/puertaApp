@@ -1,7 +1,7 @@
 import React from 'react'
-import BuyerProfile from '../components/BuyerProfile'
+import BuyerProfile from '../components/Profile'
 function buyerProfile() {
-    return <BuyerProfile />
+    return <Profile />
 }
 
 export default buyerProfile
