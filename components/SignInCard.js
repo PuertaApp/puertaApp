@@ -120,7 +120,7 @@ const SignInCard = props => {
     setFormValues({ ...formValues, [e.target.name]: e.target.value });
   };
   const router = useRouter();
-  console.log(formValues);
+
   const handleSubmit = e => {
     e.preventDefault();
     signinUser(formValues)
