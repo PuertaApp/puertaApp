@@ -48,6 +48,7 @@ router.put(
   catchErrors(userController.deleteFollower)
 );
 
+// Profile
 router
   .route("/api/users/:userId")
   .get(userController.getAuthUser)

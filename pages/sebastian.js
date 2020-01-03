@@ -1,9 +1,9 @@
-import SignUpCard from "../components/signupcard";
+import HasBeenMatched from "../components/hasbeenmatched";
 
 const Sebastian = () => {
 	return (
 		<div>
-			<SignUpCard />
+			<HasBeenMatched />
 		</div>
 	);
 };
