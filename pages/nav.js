@@ -1,20 +1,19 @@
-import {AgentNav, BuyerNav} from '../components/AgentNav';
+import {AgentNav, BuyerNav, PropRepNav} from '../components/AgentNav';
 import ReactDOM from 'react-dom';
 
 const Nav = (props) => {
-    const isAgent = props.isAgent;
-    if(isAgent === true){
+    const user = props.role;
+    if(user === "agent"){
         return <AgentNav/>;
-    } else {
-    return <BuyerNav/>;}
+    } if(user === "buyer") {
+    return <BuyerNav/>;
+}else{
+    return <PropRepNav/>
+}
 
 }
 
 
-const Test =()=> {
-    return(
-        <Nav isAgent={true}/>
-    )
-}
 
-export default Test;
+
+export default Nav;

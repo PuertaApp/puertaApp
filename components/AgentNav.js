@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import HistoryIcon from '../components/icons/HistoryIcon';
 import ListIcon from '../components/icons/ListIcon';
 import HomeIcon from '../components/icons/HomeIcon';
+import BurgerIcon from '../components/icons/BurgerIcon';
 
 const StyledDiv = styled.div` 
    display: flex;
@@ -55,7 +56,7 @@ export const BuyerNav = () => {
         <div>Home</div>
         </StyledDiv>
         <StyledDiv>
-        <NavButton><HistoryIcon
+        <NavButton><BurgerIcon
             height={25}
             width={25}
             /></NavButton>
@@ -64,6 +65,35 @@ export const BuyerNav = () => {
         <StyledDiv>
         <NavButton>Profile</NavButton>
         <div>Profile</div>
+        </StyledDiv>
+    </NavBar>
+    )
+}
+
+export const PropRepNav = () => {
+    return(
+        <NavBar>
+        <StyledDiv>
+        <NavButton><HomeIcon
+            height={25}
+            width={25}
+            /></NavButton>
+        <div>Home</div>
+        </StyledDiv>
+        <StyledDiv>
+        <NavButton><BurgerIcon
+            height={25}
+            width={25}
+            /></NavButton>
+        <div>Properties</div>
+        </StyledDiv>
+        <StyledDiv>
+        <NavButton>Reppin</NavButton>
+        <div>Profile</div>
+        </StyledDiv>
+        <StyledDiv>
+        <NavButton></NavButton>
+        <div>Add Property</div>
         </StyledDiv>
     </NavBar>
     )
