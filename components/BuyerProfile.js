@@ -25,8 +25,8 @@ function BuyerProfile() {
           <div className="location">
               <div className='user-location-svg'>
                   <MapMarkerIcon 
-                    width={47}
-                    height={39}
+                    width={41}
+                    height={33}
                   />
               </div>
               <p className='user-location-address'>Olmsted Falls, OH 44039</p>
@@ -34,8 +34,8 @@ function BuyerProfile() {
           <div className="favorite">
               <div className='user-favorite-svg'>
                   <HeartIconFilled
-                    width={47}
-                    height={39}
+                    width={41}
+                    height={33}
                   />
               </div>
               <p className='user-favorite-text'> 7 Favorite Properties</p>
@@ -43,8 +43,8 @@ function BuyerProfile() {
           <div className="dislike">
               <div className='user-dislike-svg'>
                   <EyeIcon 
-                    width={47}
-                    height={39}
+                    width={41}
+                    height={33}
                   />
               </div>
               <p className='user-dislike-address'> 12 Dislikes Properties</p>
@@ -145,13 +145,22 @@ const BuyerProfileStyles = styled.div`
                 font-weight: normal;
                 font-size: 22px;
                 line-height: 26px;
-
-color: #141940;
+                color: #141940;
 
             }
         }
         .user-location-svg, .user-favorite-svg, .user-dislike-svg{
+            display: flex;
+        justify-content: flex-start;
+        align-items: center;
             margin-right: 15px;
+            background: linear-gradient(130.38deg, #FAFAFA 0%, #F5F5F5 100.03%);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-sizing: border-box;
+            border-radius: 10px;
+            box-shadow: 4px 4px 8px rgba(170, 182, 209, 0.4), -6px -6px 12px rgba(255, 255, 255, 0.8);
+            height:50px;
+            width: 50px;
         }
     }
   }
