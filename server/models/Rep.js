@@ -10,8 +10,8 @@ const userSchema = new mongoose.Schema(
       ref: "Name"
     },
     housesListed: [{ type: ObjectId, ref: "House" }],
-    leadsFavorited: [{ type: ObjectId, ref: "Buyer" }],
-    leadsViewed: [{ type: ObjectId, ref: "Buyer" }],
+    leadsFavorited: [{ type: ObjectId, ref: "User" }],
+    leadsViewed: [{ type: ObjectId, ref: "User" }],
     headline: {
       type: String,
       trim: true,

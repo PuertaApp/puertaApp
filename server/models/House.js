@@ -50,7 +50,8 @@ const houseSchema = new mongoose.Schema(
     postedBy: {
       type: ObjectId,
       ref: "Rep"
-    }
+    },
+    leads: [{ type: ObjectId, ref: "User", default: [] }]
   },
   { timestamps: true }
 );

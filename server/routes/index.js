@@ -117,6 +117,23 @@ router.post(
   propertyController.postNewProperty
 );
 
+
+router.put("/api/properties/:id", propertyController.editProperty);
+
+router.delete("/api/properties/:id", propertyController.deleteProperty);
+
+router.get(
+  "/api/houseLeads/:id",
+  propertyController.getPropertyId,
+  propertyController.getAllLeadsById
+);
+
+// router.post(
+//   "/api/houseLeadsView/:id",
+//   propertyController.getPropertyId,
+//   propertyController.addToViewedPropertiesLeads
+// );
+
 /**
  * Buyer ROUTES: /api/users/buyers
  */
