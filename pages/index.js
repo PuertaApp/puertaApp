@@ -1,7 +1,7 @@
 // useEffect is the hook version of ComponentDidMount, which we're using to register our service worker.
 // https://medium.com/@felippenardi/how-to-do-componentdidmount-with-react-hooks-553ba39d1571 
 import React, { useState, useEffect } from "react";
-
+import { AgentNav, PropRepNav, BuyerNav } from '../components/Nav'
 // getting the URL we're running
 import absoluteUrl from 'next-absolute-url'
 // and for prod
@@ -18,7 +18,8 @@ import StoryList from '../components/StoryList'
 
 require('isomorphic-fetch');
 
-const Index = ({ req, classes, auth, houses, userData }) => {
+const Index = ({ req, classes, auth, houses, userData, user }) => {
+  console.log(user)
   return (
     <main >
       {auth.user && auth.user._id ? (
@@ -42,6 +43,9 @@ const Index = ({ req, classes, auth, houses, userData }) => {
           Un Auth page, splash page
         </div>
       )}
+      {user.role == 'buyer' ? <BuyerNav/>: null}
+      {user.role == 'agent' ? <AgentNav/>: null}
+      {user.role == 'rep' ? <PropRepNav/>: null}
     </main>
   )
 }
@@ -95,7 +99,7 @@ Index.getInitialProps = async function({req, res, query: { userId }}) {
     console.log(e)
     userData = undefined 
   }
-  return { auth, userId, houses, userData };
+  return { auth, userId, houses, userData, user };
 };
 
 export default Index;
