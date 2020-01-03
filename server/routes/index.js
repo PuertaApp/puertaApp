@@ -5,7 +5,6 @@ const buyerController = require("../controllers/buyerController");
 const postController = require("../controllers/postController");
 const dataController = require("../controllers/dataController");
 const propertyController = require("../controllers/houseController");
-const buyerController = require("../controllers/buyerController");
 
 const router = express.Router();
 
