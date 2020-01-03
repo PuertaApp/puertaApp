@@ -64,7 +64,7 @@ const autoPopulateInfo = function(next) {
 userSchema.pre("findOne", autoPopulateInfo);
 
 /* passportLocalMongoose takes our User schema and sets up a passport "local" authentication strategy using our email as the username field */
-userSchema.plugin(passportLocalMongoose, { usernameField: "email" });
+userSchema.plugin(passportLocalMongoose, { usernameField: "email", populateFields: ["buyerId", "agentId", "repId"] });
 
 /* The MongoDBErrorHandler plugin gives us a better 'unique' error, rather than: "11000 duplicate key" */
 // Update, this plugin was breaking and couldn't find a solution.

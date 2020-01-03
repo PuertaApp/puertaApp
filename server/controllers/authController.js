@@ -5,6 +5,7 @@ const Name = require("../models/Name");
 const Buyer = require("../models/Buyer");
 const Agent = require("../models/Agent");
 const Rep = require("../models/Rep");
+const { roles } = require("../roles");
 
 exports.validateSignup = (req, res, next) => {
   // req.sanitizeBody("name");
@@ -108,4 +109,20 @@ exports.checkAuth = (req, res, next) => {
     return next();
   }
   res.redirect("/signin");
+};
+
+exports.grantAccess = (action, resource) => {
+  return async (req, res, next) => {
+    try {
+      const permission = roles.can(req.user.role)[action](resource);
+      if (!permission.granted) {
+        return res.status(401).json({
+          error: "You don't have enough permission to perform this action"
+        });
+      }
+      next();
+    } catch (error) {
+      next(error);
+    }
+  };
 };

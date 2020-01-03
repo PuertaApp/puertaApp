@@ -4,6 +4,8 @@ const multer = require("multer");
 const jimp = require("jimp");
 const Property = require("../models/House");
 const Buyer = require("../models/Buyer");
+const Agent = mongoose.model('Agent')
+const Rep = mongoose.model('Rep')
 
 exports.getUsers = async (req, res) => {
   const users = await User.find().select("_id name email createdAt updatedAt");
@@ -14,17 +16,31 @@ exports.getAuthUser = (req, res) => {
   if (!req.isAuthUser) {
     return res.status(403).json({
       message: "You are unauthenticated, please sign in or sign up."
-    });
-    res.redirect("/signin");
+    })
   }
-  res.json(req.user);
+  res.json(req.profile)
 };
 
 exports.getUserById = async (req, res, next, id) => {
-  const user = await User.findOne({ _id: id });
+  let user = await User.findOne({ _id: id });
+
+  if(user.role === "buyer"){
+    const buyer = await Buyer.findOne({_id: user.buyerId._id})
+    user.buyerId = buyer
+  }
+
+  if(user.role === "agent"){
+    const agent = await Agent.findOne({_id: user.agentId._id})
+    user.agentId = agent
+  }
+
+  if(user.role === "rep"){
+    const rep = await Rep.findOne({_id: user.repId._id})
+    user.repId = rep
+  }
+
   req.profile = user;
-  console.log(req.profile);
-  const profileId = mongoose.Types.ObjectId(req.profile._id);
+  const profileId = mongoose.Types.ObjectId(req.profile._id)
   if (req.user && profileId.equals(req.user._id)) {
     req.isAuthUser = true;
     return next();
@@ -80,7 +96,12 @@ exports.resizeAvatar = async (req, res, next) => {
   next();
 };
 
-exports.updateUser = async (req, res) => {
+exports.updateUser = async(req,res) => {
+  if(!req.isAuthUser) {
+    return res.status(403).json({
+      message: "You are unauthenticated, please sign in or sign up."
+    })
+  }
   req.body.updatedAt = new Date().toISOString();
   const updatedUser = await User.findByIdAndUpdate(
     { _id: req.user._id },

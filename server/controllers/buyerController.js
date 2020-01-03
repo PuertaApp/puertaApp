@@ -1,3 +1,4 @@
+const mongoose = require('mongoose')
 const Buyer = require("../models/Buyer");
 const Property = require("../models/House");
 //// ADD TO FAVORITES OR TO DISLIKES
@@ -100,4 +101,9 @@ exports.favoriteProperty = async (req, res) => {
   } catch (error) {
     return res.status(500).json(error);
   }
-};
+}
+
+exports.getAllProperties = async (req, res) => {
+    const houses = await Property.find() 
+    res.json(houses);
+}

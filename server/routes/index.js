@@ -1,6 +1,7 @@
 const express = require("express");
 const authController = require("../controllers/authController");
 const userController = require("../controllers/userController");
+const buyerController = require("../controllers/buyerController");
 const postController = require("../controllers/postController");
 const dataController = require("../controllers/dataController");
 const propertyController = require("../controllers/houseController");
@@ -48,6 +49,7 @@ router.put(
   catchErrors(userController.deleteFollower)
 );
 
+// Profile
 router
   .route("/api/users/:userId")
   .get(userController.getAuthUser)
@@ -117,6 +119,7 @@ router.post(
   propertyController.postNewProperty
 );
 
+
 router.put("/api/properties/:id", propertyController.editProperty);
 
 router.delete("/api/properties/:id", propertyController.deleteProperty);
@@ -137,4 +140,10 @@ router.get(
 //// LIKE - DISLIKE HOUSES
 router.put('/api/property/dislike/:id', buyerController.dislikeProperty)
 router.put('/api/property/favorite/:id', buyerController.favoriteProperty)
+/**
+ * Buyer ROUTES: /api/users/buyers
+ */
+
+router.get("/api/users/buyers/houses", authController.checkAuth, authController.grantAccess('readAny', 'property'), buyerController.getAllProperties)
+
 module.exports = router;

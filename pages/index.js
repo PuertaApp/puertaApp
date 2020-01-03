@@ -1,7 +1,7 @@
 // useEffect is the hook version of ComponentDidMount, which we're using to register our service worker.
 // https://medium.com/@felippenardi/how-to-do-componentdidmount-with-react-hooks-553ba39d1571 
 import React, { useState, useEffect } from "react";
-
+import { AgentNav, PropRepNav, BuyerNav } from '../components/Nav'
 // getting the URL we're running
 import absoluteUrl from 'next-absolute-url'
 // and for prod
@@ -18,7 +18,8 @@ import StoryList from '../components/StoryList'
 
 require('isomorphic-fetch');
 
-const Index = ({ req, classes, auth, houses, userData }) => {
+const Index = ({ req, classes, auth, houses, userData, user }) => {
+  console.log(user)
   return (
     <main >
       {auth.user && auth.user._id ? (
@@ -42,6 +43,9 @@ const Index = ({ req, classes, auth, houses, userData }) => {
           Un Auth page, splash page
         </div>
       )}
+      {user.role == 'buyer' ? <BuyerNav/>: null}
+      {user.role == 'agent' ? <AgentNav/>: null}
+      {user.role == 'rep' ? <PropRepNav/>: null}
     </main>
   )
 }
@@ -53,9 +57,7 @@ Index.getInitialProps = async function({req, res, query: { userId }}) {
   const user = auth.user;
   const isAnonymous = !user;
   // getting the url we're running 
-  const { protocol, host } = absoluteUrl(req)
-  const url = `${host}`
-  console.log(url)
+  const { origin } = absoluteUrl(req)
 
   // getting the stories from hacker news to seed our app
   let houses
@@ -73,7 +75,7 @@ Index.getInitialProps = async function({req, res, query: { userId }}) {
       data = await fetch('http://localhost:3000/api/data')  
     } else {
       // production code
-      data = await fetch(`https://${url}/api/data`)  
+      data = await fetch(`${origin}/api/data`)  
     }
       
     houses = await data.json()    
@@ -90,14 +92,14 @@ Index.getInitialProps = async function({req, res, query: { userId }}) {
       userData = await fetch('http://localhost:3000/api/users')  
     } else {
       // production code
-      userData = await fetch(`https://${url}/api/users`)  
+      userData = await fetch(`${origin}/api/users`)  
     }
     userData = await userData.json();
   } catch(e) {
     console.log(e)
     userData = undefined 
   }
-  return { auth, userId, houses, userData };
+  return { auth, userId, houses, userData, user };
 };
 
 export default Index;
