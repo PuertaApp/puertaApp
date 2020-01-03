@@ -1,9 +1,15 @@
-import React from 'react';
+import React, {useState } from 'react';
 import PropertyCard from "./../components/PropertyCard";
+import MeetPopup from '../components/MeetPopup';
 
-function property() {
-    return  <PropertyCard />
-    
+const Property = () => {
+
+  return (
+    <div>
+      <PropertyCard /> 
+      <MeetPopup />   
+    </div>
+  )
 }
 
-export default property
+export default Property
