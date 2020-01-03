@@ -1,5 +1,5 @@
 import React from 'react'
-import PropertyPage from '../components/icons/PropertyPage'
+import PropertyPage from '../components/PropertyPage'
 
 function propertypage() {
     return <PropertyPage />
