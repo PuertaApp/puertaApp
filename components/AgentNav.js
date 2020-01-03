@@ -13,10 +13,11 @@ const StyledDiv = styled.div`
    align-content: center; 
    justify-content: center;
    font-family: sans-serif;
-   font-size: 12px;
+   font-size: 10px;
+
    div {
-       width: 60px;
-       margin-left: 20%;
+       width: 100%;
+       text-align: center;
        padding-top: 5%
    }
 `
