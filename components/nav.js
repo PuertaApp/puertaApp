@@ -46,7 +46,7 @@ export const AgentNav = () => {
                   <ListIcon
                     height={25}
                     width={25}
-                    />                                                         
+                    /> <div>Leads</div>                                                        
                 </NavButton>                                 
               </Link>
               <a>Leads</a>
@@ -58,7 +58,7 @@ export const AgentNav = () => {
                     height={25}
                     width={25}
                     
-                    />                                                         
+                    />  <div>History</div>                                                       
                 </NavButton>                            
               </Link>
               <a>History</a>
@@ -69,7 +69,7 @@ export const AgentNav = () => {
                   <HistoryIcon
                     height={25}
                     width={25}
-                    />                                                        
+                    />   <div>Profile</div>                                                     
                 </NavButton>            
               </Link>         
               <a>Profile</a> 
@@ -86,7 +86,7 @@ export const BuyerNav = () => {
         <NavButton><HomeIcon
             height={25}
             width={25}
-            /></NavButton>
+            /><div>Home</div></NavButton>
             </Link>
         <div>Home</div>
         </StyledDiv>
@@ -96,13 +96,13 @@ export const BuyerNav = () => {
           <BurgerIcon
             height={25}
             width={25}
-            /></NavButton>
+            /><div>Agents</div></NavButton>
             </Link>
         <div>Agents</div>
         </StyledDiv>
         <StyledDiv>
           <Link href="/profile">
-        <NavButton>Profile</NavButton></Link>
+        <NavButton>Profile<div>Profile</div></NavButton></Link>
         <div>Profile</div>
         </StyledDiv>
         
