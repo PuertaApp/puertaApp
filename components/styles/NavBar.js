@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 const NavBar = styled.div`
+	z-index: 1000;
 	display: flex;
 	position: fixed;
 	justify-content: space-evenly;
@@ -11,7 +12,6 @@ const NavBar = styled.div`
 	width: 100%;
 	max-height: 120px;
 	min-height: 70px;
-	z-index: 9999;
 	@media (min-width: 900px) {
 		top: 0;
 		padding-bottom: 80px;
@@ -19,5 +19,4 @@ const NavBar = styled.div`
 		justify-content: flex-end;
 	}
 `;
-
 export default NavBar;
