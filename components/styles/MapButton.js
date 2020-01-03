@@ -1,10 +1,13 @@
 import styled from 'styled-components';
 
-const NavButton = styled.button `
+const MapButton = styled.button `
 width: 63px;
 height: 63px;
 color: #96a5c7;
 z-index: 1000;
+top: 10px;
+right: 10px;
+position: fixed;
 background: #f9f9f9;
   display: flex;
   justify-content: center;
@@ -20,4 +23,4 @@ background: #f9f9f9;
     }
 `
 
-export default NavButton;
+export default MapButton;
