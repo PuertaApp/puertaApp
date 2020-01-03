@@ -1,6 +1,7 @@
 const express = require("express");
 const authController = require("../controllers/authController");
 const userController = require("../controllers/userController");
+const buyerController = require("../controllers/buyerController");
 const postController = require("../controllers/postController");
 const dataController = require("../controllers/dataController");
 const propertyController = require("../controllers/houseController");
@@ -116,6 +117,7 @@ router.post(
   propertyController.postNewProperty
 );
 
+
 router.put("/api/properties/:id", propertyController.editProperty);
 
 router.delete("/api/properties/:id", propertyController.deleteProperty);
@@ -131,5 +133,11 @@ router.get(
 //   propertyController.getPropertyId,
 //   propertyController.addToViewedPropertiesLeads
 // );
+
+/**
+ * Buyer ROUTES: /api/users/buyers
+ */
+
+router.get("/api/users/buyers/houses", authController.checkAuth, authController.grantAccess('readAny', 'property'), buyerController.getAllProperties)
 
 module.exports = router;
