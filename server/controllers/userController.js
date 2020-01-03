@@ -76,6 +76,11 @@ exports.resizeAvatar = async (req, res, next) => {
 };
 
 exports.updateUser = async(req,res) => {
+  if(!req.isAuthUser) {
+    return res.status(403).json({
+      message: "You are unauthenticated, please sign in or sign up."
+    })
+  }
   req.body.updatedAt = new Date().toISOString();
   const updatedUser = await User.findByIdAndUpdate(
     {_id: req.user._id},
