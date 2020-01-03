@@ -1,9 +1,9 @@
-import AgentCard from "../components/AgentCard";
+import SignUpCard from "../components/signupcard";
 
 const Sebastian = () => {
 	return (
 		<div>
-			<AgentCard />
+			<SignUpCard />
 		</div>
 	);
 };
