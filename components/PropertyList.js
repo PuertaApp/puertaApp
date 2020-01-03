@@ -17,7 +17,7 @@ const StyledList = styled.div`
        
     }
 `
-const PropertyList = () => {
+const PropertyList = ({ data }) => {
     return(
         <>
         <Link href="/map">
@@ -28,14 +28,9 @@ const PropertyList = () => {
         <StyledList >
            
         <div className= "card">
-        <PropertyCard />
+            {data.map(property => <PropertyCard property={property}/>)}
         </div>
-        <div className= "card">
-        <PropertyCard />
-        </div>
-        <div className= "card">
-        <PropertyCard />
-        </div>
+       
 
         </StyledList>
         </>
