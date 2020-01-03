@@ -17,10 +17,14 @@ background: #f9f9f9;
         box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1),
         inset 2px 2px 8px rgba(126, 138, 167, 0.4), inset -4px -4px 10px #ffffff;
     }
+    
     @media (min-width:900px){
         width: 100px;
-        height: 36px;
+        height: 40px;
         margin-left: 5px;
+        font-size: 14px;
+        
+       
     }
 
 `

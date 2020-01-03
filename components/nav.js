@@ -17,6 +17,9 @@ const StyledDiv = styled.div`
    justify-content: center;
    font-family: sans-serif;
    font-size: 10px;
+   div {
+     display: none
+   }
    .smallName{
        width: 100%;
        text-align: center;
@@ -25,6 +28,13 @@ const StyledDiv = styled.div`
          display: none;
         
        }
+   }
+   @media screen and (min-width: 900px){
+    div {
+      display: block;
+      text-align: center;
+      color: black;
+  }
    }
 `
 export const AgentNav = () => {
@@ -47,6 +57,7 @@ export const AgentNav = () => {
                   <HistoryIcon
                     height={25}
                     width={25}
+                    
                     />                                                         
                 </NavButton>                            
               </Link>
@@ -106,22 +117,22 @@ export const PropRepNav = () => {
         <NavButton><HomeIcon
             height={25}
             width={25}
-            /></NavButton>
+            /><div>Home</div></NavButton>
         <a className ="smallName">Home</a>
         </StyledDiv>
         <StyledDiv>
         <NavButton><BurgerIcon
             height={25}
             width={25}
-            /></NavButton>
+            /><div>Properties</div></NavButton>
         <a className= "smallName">Properties</a>
         </StyledDiv>
         <StyledDiv>
-        <NavButton>Reppin</NavButton>
+        <NavButton>Reppin<div>Profile</div></NavButton>
         <a className="smallName">Profile</a>
         </StyledDiv>
         <StyledDiv>
-        <NavButton></NavButton>
+        <NavButton><div>Add Property</div></NavButton>
         <a className="smallName">Add Property</a>
         </StyledDiv>
     </NavBar>
