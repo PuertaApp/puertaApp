@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import PropertyImageCarousel from './PropertyImageCarousel';
 import PropertyPageDetails from './PropertyPageDetails';
 import PropertyPageTimes from './PropertyPageTimes';
+import PropertyPageProperties from './PropertyPageProperties';
 
 function PropertyPage() {
     return (
@@ -10,6 +11,7 @@ function PropertyPage() {
             <PropertyImageCarousel />
             <PropertyPageDetails />
             <PropertyPageTimes />
+            <PropertyPageProperties />
         </PropertyPageStyles>
     )
 }
